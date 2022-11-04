@@ -15,6 +15,5 @@ git commit -m 'auto deploy'
 
 git push -f https://github.com/bettersong/nanjiu.git main:static-pages
 
-cd -
 
 set -x
