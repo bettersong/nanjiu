@@ -8,6 +8,7 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
 import { initMeteor } from "../utils/meteor.js";
+// const initMeteor: any = require("../utils/meteor.js");
 
 onMounted(() => {
   initMeteor();

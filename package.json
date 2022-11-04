@@ -1,6 +1,6 @@
 {
-  "name": "3d-demo",
-  "version": "0.0.0",
+  "name": "nanjiu_learn",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
@@ -19,7 +19,7 @@
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
     "@types/less": "^3.0.3",
-    "@types/node": "^16.11.56",
+    "@types/node": "^16.18.3",
     "@vitejs/plugin-vue": "^3.0.3",
     "@vitejs/plugin-vue-jsx": "^2.0.1",
     "@vue/eslint-config-prettier": "^7.0.0",
