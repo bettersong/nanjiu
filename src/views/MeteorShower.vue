@@ -1,5 +1,4 @@
 <template>
-  <!-- <div>1111</div> -->
   <div class="meteor_bg">
     <canvas id="sky"></canvas>
   </div>
@@ -17,7 +16,5 @@ onMounted(() => {
 <style scoped>
 .meteor_bg {
   background: #000;
-  /* background: url("../../public/bg.jpg") no-repeat;
-  background-size: 100% 100%; */
 }
 </style>
