@@ -1,5 +1,5 @@
 name: Build and Deploy
-on: # 监听 master 分支上的 push 事件
+on: # 监听 main 分支上的 push 事件
   push:
     branches:
       - main
