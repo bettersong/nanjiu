@@ -24,6 +24,11 @@ const router = createRouter({
       name: "ChipBanner",
       component: () => import("../views/ChipBanner.vue"),
     },
+    {
+      path: "/cardList",
+      name: "CardList",
+      component: () => import("../views/CardList.vue"),
+    },
   ],
 });
 
