@@ -1,20 +1,20 @@
 <template>
   <div class="card_item">
-    <img
-      src="https://bookcover.yuewen.com/qdbimg/349573/1115277/150"
-      class="book_cover"
-    />
-    <div class="card_item_right">
-      <div class="book_title">{{ book.bookName }}</div>
-      <div class="book_author">{{ book.catlog }}</div>
-      <div class="book_tags">
-        <div class="book_tag" v-for="(item, index) in book.tags" :key="index">
-          {{ item }}
+    <div class="card_inner">
+      <img :src="book.bookCover" class="book_cover" />
+      <div class="card_item_right">
+        <div class="book_title">{{ `${book.bookName}${index + 1}` }}</div>
+        <div class="book_author">{{ book.catlog }}</div>
+        <div class="book_tags">
+          <div class="book_tag" v-for="(item, index) in book.tags" :key="index">
+            {{ item }}
+          </div>
+        </div>
+        <div class="book_desc">
+          {{ book.desc }}
         </div>
       </div>
-      <div class="book_desc">
-        {{ book.desc }}
-      </div>
+      <!-- <script></script> -->
     </div>
   </div>
 </template>
@@ -24,19 +24,23 @@ import { toRefs } from "vue";
 
 const props = defineProps<{
   book: any;
+  index: any;
 }>();
-const { book } = toRefs(props);
+const { book, index } = toRefs(props);
 </script>
 
 <style lang="less" scoped>
 .card_item {
+  margin: 20px auto;
+  content-visibility: auto;
+  // contain-intrinsic-size: 200px;
+}
+.card_inner {
   display: flex;
   width: 100%;
   border-radius: 10px;
-  margin: 20px auto;
   padding: 10px;
-  background: paleturquoise;
-  // content-visibility: auto;
+  background: skyblue;
 }
 .book_cover {
   width: 120px;
