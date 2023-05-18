@@ -33,14 +33,6 @@ html {
   flex-direction: column;
   align-items: center;
   padding: 20px 80px;
-  --color1: pink;
-  .suipian_box {
-    width: 400px;
-    height: 100px;
-    // background: paint(suipian);
-    // --color1: pink;
-    --color: red;
-  }
 }
 .paint_title {
   margin-bottom: 20px;
@@ -48,12 +40,22 @@ html {
   font-weight: 500;
   --color3: skyblue;
 }
+@property --f {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
 .paint_img {
   width: 400px;
   height: auto;
   --color: rgba(255, 255, 255, 1);
   --m: 6;
   --n: 6;
+  --f: 1;
   -webkit-mask: paint(suipian);
+  transition: --f 1s;
+}
+.paint_img:hover {
+  --f: 0;
 }
 </style>
