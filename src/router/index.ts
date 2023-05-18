@@ -29,6 +29,11 @@ const router = createRouter({
       name: "CardList",
       component: () => import("../views/CardList.vue"),
     },
+    {
+      path: "/paintSuipian",
+      name: "paintSuipian",
+      component: () => import("../views/css/paintSuipian.vue"),
+    },
   ],
 });
 
