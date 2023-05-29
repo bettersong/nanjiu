@@ -34,6 +34,11 @@ const router = createRouter({
       name: "paintSuipian",
       component: () => import("../views/css/paintSuipian.vue"),
     },
+    {
+      path: "/xq",
+      name: "xingqiu",
+      component: () => import("../views/XingQiu.vue"),
+    },
   ],
 });
 

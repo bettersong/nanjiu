@@ -2,6 +2,7 @@
   <div :class="$style.paint_container">
     <!-- <div :class="$style.paint_title">paint 碎片效果</div> -->
     <img src="/public/3.jpg" :class="$style.paint_img" />
+    <!-- <img src="/public/3.jpg" :class="$style.paint_img1" /> -->
     <!-- <div :class="$style.suipian_box"></div> -->
   </div>
 </template>
@@ -12,10 +13,8 @@ import { onMounted } from "vue";
 
 const paint = () => {
   if (CSS.paintWorklet) {
-    console.log(CSS);
     CSS.paintWorklet.addModule("/src/utils/paintSuipian.js");
   }
-  //   console.log(CSS, "css");
 };
 
 onMounted(() => {
@@ -49,13 +48,25 @@ html {
   width: 400px;
   height: auto;
   --color: rgba(255, 255, 255, 1);
-  --m: 6;
-  --n: 6;
+  --m: 10;
+  --n: 10;
   --f: 1;
   -webkit-mask: paint(suipian);
   transition: --f 1s;
 }
 .paint_img:hover {
+  --f: 0;
+}
+.paint_img1 {
+  width: 400px;
+  height: auto;
+  --m: 10;
+  --n: 10;
+  --f: 1;
+  -webkit-mask: paint(suipian1);
+  transition: --f 1s;
+}
+.paint_img1:hover {
   --f: 0;
 }
 </style>
