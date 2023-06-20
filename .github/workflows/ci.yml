@@ -6,19 +6,23 @@ on: # 监听 main 分支上的 push 事件
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest # 构建环境使用 ubuntu
-    strategy:
-      matrix:
-        node-version: '14.x' # node 版本
+    # strategy:
+    #   matrix:
+    #     node-version: '14.x' # node 版本
     steps:
       - name: Checkout  # 将代码拉到虚拟机
         uses: actions/checkout@v2.3.1  
         with:
           persist-credentials: false
 
+      - name: Use Node.js ${{ matrix.node-version }}
+      - uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
       - name: Install and Build # 下载依赖 打包项目
         run: |
           npm install
-          set -x
           npm run build
 
       - name: Deploy 🚀 # 部署
