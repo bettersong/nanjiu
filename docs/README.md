@@ -9,5 +9,5 @@ features:
 # - title: 起点H5
 # - title: 活动
 # - title: 小程序
-footer: Copyright © 前端南玖
+footer: Copyright 2023 © 前端南玖
 ---
