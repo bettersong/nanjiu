@@ -20,9 +20,9 @@ jobs:
       #   node-version: '14'
 
       - name: Install and Build # 下载依赖 打包项目
-        uses: actions/setup-node@v3
-        with:
-          node-version: '14'
+        # uses: actions/setup-node@v3
+        # with:
+        #   node-version: '14'
         run: |
           npm install
           npm run build
