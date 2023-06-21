@@ -2,6 +2,12 @@ module.exports = {
     title: '前端南玖',
     description: '前端南玖的博客',
     base: '/nanjiu/',
+    theme: 'reco',
+    locales: {
+        '/': {
+            lang: 'zh-CN'
+        }
+    },
     themeConfig: {
         nav: [
             { text: '首页', link: '/' },

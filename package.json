@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/bettersong/nanjiu#readme",
   "devDependencies": {
-    "vuepress": "^1.9.9"
+    "vuepress": "^1.9.9",
+    "vuepress-theme-reco": "^1.6.17"
   }
 }
