@@ -17,15 +17,11 @@ module.exports = {
         type: 'blog',
         authorAvatar: '/sy.jpg',
         subSidebar: 'auto',
+        valineConfig: {
+            appId: 'wDxOQGAiCHeiIi0Dz7A7lfmS-gzGzoHsz',
+            appKey: 'NXodSccyH1EXXRVHD2bPQoVa'
+        },
         blogConfig: {
-            // category: {
-            //     location: 2,     // 在导航栏菜单中所占的位置，默认2
-            //     text: 'Category' // 默认文案 “分类”
-            // },
-            // tag: {
-            //     location: 3,     // 在导航栏菜单中所占的位置，默认3
-            //     text: 'Tag'      // 默认文案 “标签”
-            // },
             socialLinks: [     // 信息栏展示社交信息
                 { icon: 'reco-github', link: 'https://github.com/bettersong' },
                 { icon: 'reco-juejin', link: 'https://juejin.cn/user/219558057873005/posts' },
@@ -35,6 +31,10 @@ module.exports = {
         nav: [
             { text: '首页', link: '/' },
             { text: 'JavaScript', link: '/javascript/' },
+            { text: 'HTML&CSS', link: '/htmlcss/' },
+            { text: '工程化', items: [
+                { text: 'webpack', link: '/webpack/' },
+            ] },
             { text: '关于', link: '/about/' }
         ],
         // sidebar: 'auto'
@@ -45,6 +45,13 @@ module.exports = {
                     collapsable: false,
                     children: ["", "eventloop"],
                 },
+            ],
+            '/htmlcss/': [
+                {title: 'HTML', collapsable: false, children: [""]},
+                {title: 'CSS', collapsable: false, children: []},
+            ],
+            '/webpack/': [
+                {title: 'webpack', collapsable: false, children: [""]},
             ]
         }
     }

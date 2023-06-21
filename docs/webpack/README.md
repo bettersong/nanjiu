@@ -1,0 +1,613 @@
+---
+title: 从核心概念到上手配置
+author: 南玖
+date: 2023-06-21
+categories: webpack
+tags:
+  - webpack
+---
+
+## 前言
+
+作为前端开发者，相信大家或多或少都接触过`webpack`，现如今`webpack`已经渗透在了前端的各个方面，所以我们有必要来了解并学习`webpack`，`webpack` 是一种用于构建 JavaScript 应用程序的静态模块打包器，它能够以一种相对一致且开放的处理方式，加载应用中的所有资源文件（图片、CSS、视频、字体文件等），并将其合并打包成浏览器兼容的 Web 资源文件。`webpack`相比其它构建工具功能更加强大，可扩展性也更强，它能够融合多种工程化工具，将开发阶段的应用代码编译、打包成适合网络分发、客户端运行的应用产物。
+
+
+## 核心概念
+
+### 输入输出
+
+#### entry
+
+> webpack的构建入口，**入口起点(entry point)** 指示 webpack 应该使用哪个模块，来作为构建其内部 [依赖图(dependency graph)](https://webpack.docschina.org/concepts/dependency-graph/) 的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的。
+
+```
+// 单入口
+module.exports = {
+  entry: './src/main.js'
+}
+​
+// 多入口
+module.exports = {
+  entry: {
+    a: './src/a.js',
+    b: './src/b.js'
+  }
+}
+```
+
+#### output
+
+> **output** 属性告诉 webpack 在哪里输出它所创建的 *bundle*，以及如何命名这些文件。主要输出文件的默认值是 `./dist/main.js`，其他生成文件默认放置在 `./dist` 文件夹中。
+
+```
+// 单入口
+module.exports = {
+  entry: './src/main.js',
+  output: {
+    filename: 'bundle.js',   
+    path: path.resolve(__dirname, 'dist'),
+  }
+}
+// 多入口
+module.exports = {
+  entry: {
+    a: './src/a.js',
+    b: './src/b.js'
+  },
+  output: {
+    filename: '[name].[hash:6].js', // 通过占位符确保文件名唯一，考虑缓存问题，还可以为文件名加上hash
+    path: __dirname + '/dist',
+    publicPath: '/',    // 生产环境一般是CDN地址，开发环境配置为/或不配置
+  }
+}
+```
+
+### 模块处理
+
+#### loader
+
+> webpack 只能理解 JavaScript 和 JSON 文件，这是 webpack 开箱可用的自带能力。**loader** 让 webpack 能够去处理其他类型的文件，并将它们转换为有效 [模块](https://webpack.docschina.org/concepts/modules)，以供应用程序使用，以及被添加到依赖图中。
+
+比如：配置webpack为css文件应用`css-loader`
+
+```
+module.exports = {
+  module: {
+    rules: [
+      {test: /.css$/, use: 'css-loader'}
+    ]
+  }
+}
+```
+
+[`module.rules`](https://webpack.docschina.org/configuration/module/#modulerules) 允许你在 webpack 配置中指定多个 loader。 这种方式是展示 loader 的一种简明方式，并且有助于使代码变得简洁和易于维护。
+
+#### plugin
+
+> **插件** 是 webpack 的 [支柱](https://github.com/webpack/tapable) 功能。Webpack 自身也是构建于你在 webpack 配置中用到的 **相同的插件系统** 之上！
+>
+> 插件目的在于解决 [loader](https://webpack.docschina.org/concepts/loaders) 无法实现的**其他事**。Webpack 提供很多开箱即用的 [插件](https://webpack.docschina.org/plugins/)。
+
+比如：为编译过程添加进度报告插件
+
+```
+const Webpack = require('webpack')
+module.exports = {
+  plugins: [new Webpack.ProgressPlugin()]
+}
+```
+
+#### resolve
+
+> 用于配置模块路径解析规则，可用于帮助 Webpack 更精确、高效地找到指定模块
+
+比如配置别名：
+
+创建 `import` 或 `require` 的别名，来确保模块引入变得更简单。例如，一些位于 `src/` 文件夹下的常用模块：
+
+```
+module.exports = {
+  resolve: {
+    alias: {
+      node_modules: path.resolve(__dirname, './node_modules'),
+      '@': path.resolve(__dirname, './src'),
+      api: path.resolve(__dirname, './src/api'),
+      components: path.join(__dirname, './src/components'),
+    }
+  }
+}
+```
+
+#### module
+
+> 这些选项决定了如何处理项目中的[不同类型的模块](https://webpack.docschina.org/concepts/modules)。
+
+比如我们常见的loader就是在`module.rules`内配置的。
+
+```
+module.exports = {
+  module: {
+    rules: [
+      {test: /.css$/, use: 'css-loader'}
+    ]
+  }
+}
+```
+
+#### externals
+
+> 用于声明外部资源，Webpack 会直接忽略这部分资源，跳过这些资源的解析、打包操作
+
+比如**防止**将某些 `import` 的包(package)**打包**到 bundle 中，而是在运行时(runtime)再去从外部获取这些*扩展依赖(external dependencies)* 。
+
+比如：从CDN引入Vue
+
+```
+<!-- index.html -->
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.3/vue.min.js"></script>
+```
+
+```
+// webpack.config.js
+module.exports = {
+  externals: {
+    vue: 'vue'
+  }
+}
+```
+
+### 后处理
+
+#### optimization
+
+> 用于控制如何优化产物包体积，内置 Dead Code Elimination、Scope Hoisting、代码混淆、代码压缩等功能
+>
+> 从 webpack 4 开始，会根据你选择的 [`mode`](https://webpack.docschina.org/concepts/mode/) 来执行不同的优化， 不过所有的优化还是可以手动配置和重写。
+
+```
+module.exports = {
+  //...
+  optimization: {
+    chunkIds: 'named',
+  },
+};
+```
+
+#### target
+
+> 用于配置编译产物的目标运行环境，支持 web、node、electron 等值，不同值最终产物会有所差异
+
+比如：target设置为node，webpack将在node环境下进行编译
+
+```
+module.exports = {
+  target: 'node'
+}
+```
+
+#### mode
+
+> 提供 `mode` 配置选项，告知 webpack 使用相应模式的内置优化。
+
+```
+string = 'production': 'none' | 'development' | 'production'
+```
+
+```
+module.exports = {
+  mode: 'development',
+};
+```
+
+或者从cli`--mode` 参数进行传递
+
+```
+webpack --mode development
+```
+
+### 开发效率
+
+#### watch
+
+> 启用 Watch 模式。这意味着在初始构建之后，webpack 将继续监听任何已解析文件的更改。
+
+```
+module.exports = {
+  watch: true
+}
+```
+
+**⚠️注意：`webpack-dev-server`和`webpack-dev-middleware`默认是开启watch模式的**
+
+#### devtool
+
+> 此选项控制是否生成，以及如何生成 source map。
+
+```
+string = 'eval' | false
+```
+
+选择一种 [source map](http://blog.teamtreehouse.com/introduction-source-maps) 风格来增强调试过程。不同的值会明显影响到构建(build)和重新构建(rebuild)的速度。
+
+#### devServer
+
+> 用于配置与 HMR 强相关的开发服务器功能
+
+通过 [webpack-dev-server](https://github.com/webpack/webpack-dev-server) 的这些配置，能够以多种方式改变其行为，这里比较常见的配置有：`port`、`host`、`proxy`等
+
+```
+module.exports = {
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
+    compress: true,
+    port: 9000,
+  }
+}
+```
+
+#### cache
+
+> Webpack 5 之后，该项用于控制如何缓存编译过程信息与编译结果
+
+缓存生成的 webpack 模块和 chunk，来改善构建速度。`cache` 会在[`开发` 模式](https://webpack.docschina.org/configuration/mode/#mode-development)被设置成 `type: 'memory'` 而且在 [`生产` 模式](https://webpack.docschina.org/configuration/mode/#mode-production) 中被禁用。 `cache: true` 与 `cache: { type: 'memory' }` 配置作用一致。 传入 `false` 会禁用缓存:
+
+```
+module.exports = {
+  cache: false
+}
+```
+
+## 上手配置
+
+了解完上面这些webpack核心概念，我们可以尝试来手动配置好一个Vue开发环境
+
+### 初始化项目
+
+首先`npm init -y`初始化`package.json`文件
+
+接着安装好我们的`webpack`、`webpack-cli`
+
+```
+npm i webpack webpack-cli -D
+```
+
+**⚠️注意： 我这里的webpack是5版本的**
+
+```
+"webpack": "^5.85.1",
+"webpack-cli": "^4.7.2",
+```
+
+### 处理Vue代码
+
+原生 Webpack 并不能处理这种内容格式的文件，为此我们需要引入专用于 Vue SFC 的加载器：`vue-loader`
+
+```
+npm i vue-loader
+```
+
+```
+// webpack.config.js
+
+const Webpack = require('webpack')
+const {VueLoaderPlugin}  = require('vue-loader')
+module.exports = {
+    entry: './src/main.js',
+    output: {
+        filename: 'bundle.[hash:6].js',
+        path: __dirname + '/dist',
+    },
+    module: {
+        rules:[
+            {test: /.vue$/, use: 'vue-loader'}, 
+        ]
+    },
+    plugins:[
+        new Webpack.ProgressPlugin(),
+        new VueLoaderPlugin(),
+    ],
+}
+```
+
+**提示：`vue-loader` 库同时提供用于处理 SFC 代码转译的 Loader 组件，与用于处理上下文兼容性的 Plugin 组件，两者需要同时配置才能正常运行。**
+
+此时我们的文件结构是这样的，大致与Vue项目结构一致
+
+![image-20230608153505449.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/69f2241f775047dda69e919b0ea73ae8~tplv-k3u1fbpfcp-watermark.image?)
+
+尝试启动看一下：
+
+```
+// package.json
+"dev": "webpack --mode development",
+```
+
+```
+npm run dev
+```
+
+由于我们的vue文件中有css内容，而webpack默认是不理解css内容的，所以导致报错了
+
+![image-20230608153951984.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7c6c70ae07c24db1880f62e9016ea25c~tplv-k3u1fbpfcp-watermark.image?)
+### 处理CSS内容
+
+这里需要安装`style-loader`、`css-loader`来进行处理。
+
+修改webpack配置
+
+```
+// webpack.config.js
+const Webpack = require('webpack')
+const {VueLoaderPlugin}  = require('vue-loader')
+module.exports = {
+    entry: './src/main.js',
+    output: {
+        filename: 'bundle.[hash:6].js',
+        path: __dirname + '/dist',
+    },
+    module: {
+        rules:[
+            {test: /.vue$/, use: 'vue-loader'},
+            {
+                test: /.css$/,
+                use: ['style-loader', 'css-loader']
+            }
+        ]
+    },
+    plugins:[
+        new Webpack.ProgressPlugin(),
+        new VueLoaderPlugin(),
+    ],
+}
+```
+
+此时再跑起来，发现没有报错了。
+
+### 处理JS内容
+
+我们平时在开发中肯定会用到`ES6`语法，这里我们也需要配置对应的`loader`来进行处理
+
+**安装babel-loader**
+
+```
+npm i babel-loader @babel/preset-env @babel/core
+```
+
+**配置**
+
+```
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        },
+        exclude: /node_modules/
+      }
+    ]
+  }
+}
+```
+
+当然这里的options配置你也可以在`.babelrc`或`babel.config.js`中单独配置。
+
+### 处理图片资源
+
+与CSS一样，webpack也是默认不理解图片的，所以这里也需要配置loader进行处理。
+
+**webpack4**
+
+在webpack4中，我们常用的处理图片的loader有：`file-loader`、`url-loader`
+
+-   [`file-loader`](https://v4.webpack.js.org/loaders/file-loader/) 将文件发送到输出目录
+
+```
+// webpack.config.js
+module.exports = {
+  // ...
+  module: {
+    rules: [{
+      test: /.(png|jpg|gif|jpeg)$/,
+      use: ['file-loader']
+    }],
+  },
+};
+```
+
+经过 `file-loader` 处理后，原始图片会被重命名并复制到产物文件夹，同时在代码中插入图片 URL 地址
+
+-   [`url-loader`](https://v4.webpack.js.org/loaders/url-loader/) 将文件作为 data URI 内联到 bundle 中，它有两种表现，对于小于阈值 `limit` 的图像直接转化为 base64 编码；大于阈值的图像则调用 `file-loader` 进行加载
+
+```
+module.exports = {
+  // ...
+  module: {
+    rules: [{
+      test: /.(png|jpg|gif|jpeg)$/,
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: 1024
+        }
+      }]
+    }],
+  },
+};
+```
+
+经过 `url-loader` 处理后，小于 `limit` 参数即 1024B 的图片会被转译为 Base64 编码，对于超过 `limit` 值的图片则直接调用 `file-loader` 完成加载。
+
+**webpack5**
+
+`file-loader`、`url-loader`并不局限于处理图片，它们还可以被用于加载任意类型的多媒体或文本文件，使用频率极高，几乎已经成为标配组件！所以 Webpack5 直接内置了这些能力，开箱即可使用。
+
+用法上，原本需要安装、导入 Loader，Webpack5 之后只需要通过 `module.rules.type` 属性指定[资源类型](https%3A%2F%2Fwebpack.js.org%2Fguides%2Fasset-modules%2F)即可
+
+比如：
+
+```
+module.exports = {
+  // ...
+  module: {
+    rules: [{
+      test: /.(png|jpg|gif|jpeg)$/,
+      type: 'asset/resource'
+    }],
+  },
+};
+```
+
+### 运行页面
+
+配置了这么多内容，我们却还不能看到页面的内容，心里肯定不乐意，上面这几步操作其实就相当于翻译 Vue SFC 文件的内容，接下来我们还需要让页面真正运行起来。
+
+#### 粗暴方案
+
+有一种快速验证我们的打包配置是否正确：我们只需要新建一个html文件，将打包产物引入进去，并创建好挂载节点就可以
+
+```
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div id="app"></div>
+    <script src="../dist/bundle.42603d.js"></script>
+</body>
+</html>
+```
+
+我们再把这个html文件在浏览器打开，就能看到我们vue项目能够正常打开了。
+
+**这种方案有一种弊端就是：我们打包出来的文件一般都会带有`hash`，那就需要我们每次在打包完后去`html`文件修改引入的文件，这样是不是有点太费劲了，你们能忍吗？**
+
+#### 优雅方案
+
+上面那种方案在日常开发中显然是不能接受的，身为程序员能偷懒的地方必须得偷懒！
+
+我们可以利用下面两个工具让这个过程变得更加智能化、自动化。
+
+**html-webpack-plugin： 自动生成 HTML 页面**
+
+[`HtmlWebpackPlugin`](https://github.com/jantimon/html-webpack-plugin) 简化了 HTML 文件的创建，以便为你的 webpack 包提供服务。这对于那些文件名中包含哈希值，并且哈希值会随着每次编译而改变的 webpack 包特别有用。
+
+**webpack-dev-server ：让页面真正运行起来，并具备热更新能力。**
+
+`webpack-dev-server` 主要提供两种功能：
+
+-   结合 Webpack 工作流，提供基于 HTTP(S) 协议的静态资源服务；
+-   提供资源热更新能力，在保持页面状态前提下自动更新页面代码，提升开发效率。
+
+**安装**
+
+```
+npm i html-webpack-plugin webpack-dev-server
+```
+
+**修改配置**
+
+```
+​
+const Webpack = require('webpack')
+const {VueLoaderPlugin}  = require('vue-loader')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+module.exports = {
+    entry: './src/main.js',
+    output: {
+        filename: 'bundle.[hash:6].js',
+        path: __dirname + '/dist',
+    },
+    module: {
+        rules:[
+            {test: /.vue$/, use: 'vue-loader'},
+            {
+                test: /.css$/,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /.js$/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                },
+                exclude: /node_modules/
+            },
+            {
+                test: /.(png|jpg|gif|jpeg)$/,
+                type: 'asset/resource',
+            }
+        ]
+    },
+    plugins:[
+        new Webpack.ProgressPlugin(),
+        new VueLoaderPlugin(),
+        new HtmlWebpackPlugin({
+            template: './public/index.html',
+            filename: 'index.html'
+        })
+    ],
+    devServer: {
+        hot: true,
+        open: true
+    }
+}
+```
+
+**修改启动脚本**
+
+```
+"dev": "webpack serve --mode development"
+```
+
+**运行**
+
+```
+npm run dev
+```
+
+这时webpack就能自动帮我们打开浏览器运行页面了
+
+vue文件内容如下：
+
+```
+<template>
+    <div class="title">webpack + vue -- {{ name }}</div>
+    <img src="../asset/1.png" class="top_bg" />
+</template>
+​
+<script setup>
+import { ref } from 'vue'
+const name = ref('前端南玖')
+</script>
+​
+<style>
+.title {
+    font-size: 16px;
+    font-weight: bold;
+    color: salmon;
+}
+.top_bg {
+    width: 100%;
+    height: auto;
+}
+</style>
+```
+
+![image-20230609140930576.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/79f71e5910f94b7aaacc9ba5f421d0b1~tplv-k3u1fbpfcp-watermark.image?)
+
+**如果这篇文章有帮助到你，❤️关注+点赞❤️鼓励一下作者，文章公众号首发，关注 `前端南玖` 第一时间获取最新文章～**

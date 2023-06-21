@@ -3,6 +3,8 @@ title: 关于南玖
 author: 南玖
 date: 2023-06-21
 categories: 南玖
+tags:
+ - others
 ---
 
 [![city](https://img.shields.io/badge/%E5%9F%8E%E5%B8%82-%E4%B8%8A%E6%B5%B7-brightgre?style=flat-square)]()

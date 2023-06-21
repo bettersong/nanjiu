@@ -1,0 +1,366 @@
+---
+title: 究竟什么是shadowDOM
+author: 南玖
+date: 2023-06-21
+categories: html
+tags:
+ - html
+---
+
+## shadow dom 是什么？
+
+顾名思义，shadow dom直译的话就是影子dom，但我更愿把它理解为DOM中的DOM。因为他能够为Web组件中的 DOM和 CSS提供了封装，实际上是在浏览器渲染文档的时候会给指定的DOM结构插入编写好的DOM元素，但是插入的Shadow DOM 会与主文档的DOM保持分离，也就是说Shadow DOM不存在于主DOM树上。
+
+并且**Shadow DOM封装出来的DOM元素是独立的，外部的配置不会影响到内部，内部的配置也不会影响外部。**
+
+**如果这篇文章有帮助到你，❤️关注+点赞❤️鼓励一下作者，文章公众号首发，关注 `前端南玖` 第一时间获取最新文章～**
+
+### 思考
+
+理解完它的概念，我们再来思考一个问题：
+
+**为什么我们用的一些标签明明就是一个空元素，但他却能够渲染出各种复杂的场景？**
+
+- input
+- video
+- audio
+- textarea
+- 等...
+
+可能很多同学都没想过为什么这些标签跟我们常用的`div`标签不一样，它们就简单写个标签就能渲染出对应的样式与功能；
+
+或者有些同学理解成这都是底层渲染的事，我们不必关心。
+
+<p align=center><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/083d840114304adaa9da9d2e5e3c2ea1~tplv-k3u1fbpfcp-watermark.image?" alt="ydl.gif"  /></p>
+
+是的，这些标签内部的内容确实都是底层渲染的，不过我们也不是看不到它们内部的实现原理。
+
+### 查看html原生标签的Shadow DOM
+
+在html中写入以下标签，然后到浏览器控制台去查看
+
+```html
+<input type="text">
+<input type="range">
+<video src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" controls></video>
+<textarea></textarea>
+```
+
+
+![1.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8160407690e84b14a7b9ee02f063867a~tplv-k3u1fbpfcp-watermark.image?)
+
+很多人看到的是这样的，但这和我们写的没有任何区别呀？别急，这就带你看看他们的真实面目～
+
+**首先打开浏览器控制台的设置选项**
+
+
+![2.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/34e9cec3f4364048a7e783a33a8160bd~tplv-k3u1fbpfcp-watermark.image?)
+
+**然后再找到Preference -> Elements，把show user anent shadow dom勾上**
+
+
+![3.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/00e7b489a71141e4adba0fbec9dc7d3c~tplv-k3u1fbpfcp-watermark.image?)
+
+这时候我们再来看一下此时的dom元素发生了什么变化
+
+
+![4.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8149a1a84a8a4b64a1732bc2409eea8e~tplv-k3u1fbpfcp-watermark.image?)
+
+我们会发现这些标签内部都大有乾坤，在这些标签下面都多了一个**shadow root**，在它里面才是这些标签的真实布局。
+
+既然这些标签内部都有一些子元素布局，那么我们能不能通过JavaScript来访问到它们呢？
+
+```js
+const input = document.querySelector('input')
+console.log(input.firstChild)  // null
+```
+
+很明显，这是不可以的！
+
+因为它为web开发者设定了一个边界，界定了哪些是你可以访问的，哪些实现细节是访问不到的。然而，浏览器本身却可以随意跨越这个边界。设置这样一个边界之后，它们就可以在你看不见的地方使用熟悉的web技术、同样的HTML元素去创建更多的功能，而不是像你一样要在页面上用div和span来堆。
+
+## shadow dom 结构
+
+**Shadow DOM** 允许将隐藏的 DOM 树附加到常规的 DOM 树中——它以 `shadow root` 节点为起始根节点，在这个根节点的下方，可以是任意元素，和普通的 DOM 元素一样。
+
+就是因为这个特点所以我们才能看到上面那些单个空标签就能够渲染出各种各样的复杂场景。
+
+
+![shadowdom.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fc0be53adcdf455ba6d09e47fd380f9f~tplv-k3u1fbpfcp-watermark.image?)
+
+上面这张图非常直观的表现了`shadow dom`的结构以及它与真实`dom`的关系。
+
+### shadow host
+
+一个常规 DOM 节点，Shadow DOM 会被附加到这个节点上。
+
+### shadow bounday
+
+Shadow DOM 结束的地方，也是常规 DOM 开始的地方。
+
+### shadow tree
+
+Shadow DOM 内部的 DOM 树。
+
+### shadow root
+
+Shadow tree 的根节点。
+
+## 如何使用shadow dom？
+
+### 创建一个shadow dom
+
+我们可以使用`attachShadow`给指定元素挂载一个`shadow dom`，并且返回对shadow root的引用。
+
+```js
+const shadowroot = root.attachShadow({mode: 'open'})
+const template = `
+  <div>前端南玖</div>
+ `
+shadowroot.innerHTML = template
+```
+
+### shadow dom mode
+
+当调用`Element.attachShadow()`方法t时，必须通过传递一个对象作为参数来指定shadow DOM树的封装模式，否则将会抛出一个`TypeError`。该对象必须具有`mode`属性，值为 `open` 或 `closed`。
+
+- `open` shadow root 元素可以从 js 外部访问根节点，例如使用 `Element.shadowRoot`:
+
+```
+element.shadowRoot; // 返回一个 ShadowRoot 对象
+```
+
+- `closed` 拒绝从 js 外部访问关闭的 shadow root 节点
+
+```
+element.shadowRoot; // 返回 null
+```
+
+**浏览器通常用关闭的 shadow roo 来使某些元素的实现内部不可访问，而且不可从JavaScript更改。**
+
+对于一些不希望公开shadow root 的Web组件来说，封闭的shadow DOM看起来非常方便，然而在实践中绕过封闭的shadow DOM并不难。但是完全隐藏shadow DOM所需的工作量也大大超过了它的价值。
+
+## 哪些元素可以挂载shadow dom?
+
+这里需要注意的是并非所有html元素都可以挂载`shadow dom`，只有以下这些元素可以充当`shadow dom`的 shadow host
+
+| article     | aside      | blockquote                                 | body   |
+| ----------- | ---------- | ------------------------------------------ | ------ |
+| **div**     | **footer** | **h1**                                     | **h2** |
+| **h3**      | **h4**     | **h5**                                     | **h6** |
+| **header**  | **main**   | **nav**                                    | **p**  |
+| **section** | **span**   | 任何带有有效的名称且可独立存在的自定义元素 |        |
+
+当我们尝试在其它元素挂在shadow dom时，浏览器则会抛出异常。
+
+```js
+const input = document.querySelector('input')
+const inputRoot = input.attachShadow({mode: 'open'})
+```
+
+
+![5.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ee389f0284244705a179b4587df49e8b~tplv-k3u1fbpfcp-watermark.image?)
+
+## shadow dom的特点
+
+从前面的介绍，我们知道shadow dom是游离在 DOM 树之外的节点树，但是它是基于普通 DOM 元素（非 document）创建的，并且创建后的 Shadow-dom 节点可以从界面上直观的看到。**最重要的一点是Shadow-dom 具有良好的密封性。**
+
+### 样式
+
+```html
+<style>
+  .wx_name {
+    color:aqua;
+  }
+</style>
+<body>
+    <div class="wx_name">我是真实dom</div>
+    <div id="root"></div>
+
+    <script>
+        const shadowroot = root.attachShadow({mode: 'open'})
+        const template = `
+            <div class="wx_name">shadow dom - 前端南玖</div>
+        `
+        shadowroot.innerHTML = template
+    </script>
+</body>
+```
+
+它渲染出来是下面这样的👇：
+
+
+![6.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/455e250c809848478c10ade537de7810~tplv-k3u1fbpfcp-watermark.image?)
+
+上面我们说了shadow dom是游离在 DOM 树之外的节点树，所以我们文档上的CSS就不会作用在他身上。
+
+### 样式化host元素
+
+`host`伪类选择器允许你从shadow root中的任何地方访问shadow host
+
+```js
+const shadowroot = root.attachShadow({mode: 'open'})
+const template = `
+       <div class="wx_name">shadow dom - 前端南玖</div>
+       <style>
+          :host {
+             border: 1px solid #ccc;
+             color: pink;
+           }
+        </style>
+`
+shadowroot.innerHTML = template
+```
+
+![7.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/56019ed64fdb4d5c913dea09a6bb98a3~tplv-k3u1fbpfcp-watermark.image?)
+
+需要注意的是`:host`仅在shadow root中有效，并且在shadow root之外定义的样式规则比`:host`中定义的规则具有更高的特殊性。
+
+### 样式钩子
+
+shadow dom还有一个非常重要的一个特点就是可以使用`CSS自定义属性`来创建样式占位符，并允许用户填充。
+
+```html
+<style>
+  #root {
+    --bg: coral;
+    --color: #fff: 
+  }
+</style>
+<div id="root"></div>
+
+<script>
+
+  const shadowroot = root.attachShadow({mode: 'open'})
+  const template = `
+      <div class="wx_name">shadow dom - 前端南玖</div>
+      <style>
+          .wx_name {
+              background: var(--bg, red);
+              color: var(--color, #000)
+          }
+  </style>
+`
+  shadowroot.innerHTML = template
+</script>
+```
+
+![8.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7d6ab6c00156404f96c58b2481484f63~tplv-k3u1fbpfcp-watermark.image?)
+
+### 通过CSS访问shadow
+
+如果我们想要自定义一些原生标签的样式应该怎样做呢，很显然常规的CSS选择器并不能获取到shadow dom内部元素。那我们就一点办法没有了吗？其实这里我们可以通过一些伪元素来实现，比如：
+
+```html
+<input type="range">
+```
+
+它默认长这样
+
+
+![9.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b4f49ef58c1e4cb89e5d8f30accb8b88~tplv-k3u1fbpfcp-watermark.image?)
+
+那我们怎么去改变他的样式呢，比如给它换种背景色
+
+直接给input写背景色能实现吗？
+
+```css
+input{
+  background: #ccc;
+}
+```
+
+很显然这是一种大聪明行为，那它就这一个元素，究竟怎样才能改变它的背景色呢，上面我们不是说了吗，它内部是有shadow dom的
+
+
+![10.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ef21279ce84748afac22dab145d8c0d9~tplv-k3u1fbpfcp-watermark.image?)
+
+```css
+input[type=range]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  background-color: chocolate;
+}
+```
+
+我们可以通过伪元素来访问到shadow的内部元素并改变其样式。
+
+### 事件
+
+在shadow DOM内触发的事件可以穿过shadow边界并冒泡到light DOM；但是`Event.target`的值会自动更改，因此它看起来好像该事件源自其包含的shadow树而不是实际元素的host元素。
+
+此更改称为事件重定向，其背后的原因是保留shadow DOM封装。
+
+```html
+<div id="root"></div>
+
+<script>
+  const shadowroot = root.attachShadow({mode: 'open'})
+  const template = `
+            <div class="wx_name">shadow dom - aaa</div>
+            <div class="wx_name">shadow dom - bbb</div>
+            <div class="wx_name">shadow dom - ccc</div>
+        `
+  shadowroot.innerHTML = template
+  document.addEventListener('click', e => {
+    console.log(e.target)
+  })
+</script>
+```
+
+
+
+当点击shadow dom中的任何元素时，打印出来的都是`root`，监听器无法看到调度该事件的真实元素。
+
+## 自定义元素托管shadow DOM
+
+### 模拟微信小程序标签
+
+Custom Elements API 创建的自定义元素可以像其他元素一样托管shadow DOM。
+
+```html
+<body>
+    <wx-text>前端南玖</wx-text>
+    <script>
+        class wxText extends HTMLElement {
+            constructor() {
+                super()
+                // console.log(this.innerText)
+                const text = this.innerText
+                this.innerText = null
+                const shadowRoot = this.attachShadow({mode: 'open'})
+                shadowRoot.innerHTML = `
+                    <span>${text}</span>
+                `
+            }
+        }
+
+        customElements.define('wx-text', wxText)
+    </script>
+</body>
+```
+![12.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1da813dcf7d04530acc2c755e4c6d537~tplv-k3u1fbpfcp-watermark.image?)
+
+上面这段代码就是模拟微信小程序的标签实现，这里为什么又跳到了小程序？因为微信小程序的实现原理跟这类似，我们知道小程序的图是在WebView里渲染的，那搭建视图的方式自然就需要用到HTML语言。然后为了管控安全，肯定不可能让开发者直接使用html来进行开发，所以就自己实现了一套组件组织框架Exparser内置在小程序基础库中。这里的Exparser框架模型上与WebComponents的ShadowDOM高度相似，但不依赖浏览器的原生支持，也没有其他依赖库。
+
+### 如何查看小程序编译后的标签
+
+很多人可能会有疑惑，我们在小程序中写的标签不是这样的呀，它们都不带有`wx`前缀。是的，为了开发者使用方便，开发时是不需要带`wx`前缀的，在编译过程会自动识别比对转换成真实DOM。
+
+- 我们可以打开微信开发者工具，调试微信开发者工具，然后在控制台输入`document.getElementsByTagName('webview')[0].showDevTools(true,null)`
+- 然后它会打开另外一个控制台，在这里就能看到类似我们上面实现的内容了
+
+![13.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5b6c44da5e884b2cad0abc65e200efc6~tplv-k3u1fbpfcp-watermark.image?)
+
+## 推荐阅读
+- [性能优化之html、css、js三者的加载顺序](https://juejin.cn/post/7083744760048910366)
+- [Vue异步更新机制以及$nextTick原理](https://juejin.cn/post/7089980191329484830)
+- [超全面总结Vue面试知识点，助力金三银四](https://juejin.cn/post/7075130658820980772)
+- [【面试必备】前端常见的排序算法](https://juejin.cn/post/7073640285904830471)
+- [CSS性能优化的几个技巧](https://juejin.cn/post/7077347573740077069)
+- [前端常见的安全问题及防范措施](https://juejin.cn/post/7067697624626757646)
+- [为什么大厂前端监控都在用GIF做埋点？](https://juejin.cn/post/7065123244881215518)
+- [前端人员不要只知道KFC，你应该了解 BFC、IFC、GFC 和 FFC](https://juejin.cn/post/7072174649735381029)
+
+> 原文首发地址[点这里](https://mp.weixin.qq.com/s/Skmgv5QJzFOQqZ9wzWbkAQ)，欢迎大家关注公众号 **「前端南玖」**，如果你想进前端交流群一起学习，[请点这里](https://juejin.cn/pin/7072217320155775007)
+
+**我是南玖，我们下期见！！！**
