@@ -1,10 +1,11 @@
 ---
 home: true
-heroImage: /sy.jpg
+# heroImage: /sy.jpg
 heroText: 前端南玖
 tagline: 前端技术分享，欢迎关注公众号：前端南玖
 actionText: 开始学习
 actionLink: /javascript/
+
 
 # features:
 # - title: JavaScript

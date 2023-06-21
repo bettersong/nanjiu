@@ -2,6 +2,9 @@
 title: 变量声明
 author: 南玖
 date: 2023-06-21
+categories: JavaScript
+tags: 
+- JS
 ---
 
 ## 前言
