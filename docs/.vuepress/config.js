@@ -43,7 +43,7 @@ module.exports = {
                 {
                     title: "JavaScript",
                     collapsable: false,
-                    children: ["", "var"],
+                    children: ["", "eventloop"],
                 },
             ]
         }
