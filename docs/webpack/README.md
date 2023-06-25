@@ -1,5 +1,5 @@
 ---
-title: 从核心概念到上手配置
+title: 【webpack系列】从核心概念到上手配置
 author: 南玖
 date: 2023-06-21
 categories: webpack

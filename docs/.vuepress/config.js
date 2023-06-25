@@ -51,7 +51,7 @@ module.exports = {
                 {title: 'CSS', collapsable: false, children: []},
             ],
             '/webpack/': [
-                {title: 'webpack', collapsable: false, children: [""]},
+                {title: 'webpack', collapsable: false, children: ["",'2']},
             ]
         }
     }
