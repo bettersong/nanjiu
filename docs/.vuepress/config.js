@@ -34,6 +34,7 @@ module.exports = {
             { text: 'HTML&CSS', link: '/htmlcss/' },
             { text: '工程化', items: [
                 { text: 'webpack', link: '/webpack/' },
+                { text: '合集', link: '/engineering/'}
             ] },
             { text: '关于', link: '/about/' }
         ],
@@ -43,15 +44,20 @@ module.exports = {
                 {
                     title: "JavaScript",
                     collapsable: false,
-                    children: ["", "eventloop"],
+                    children: ["", "eventloop", 'function'],
                 },
             ],
             '/htmlcss/': [
                 {title: 'HTML', collapsable: false, children: [""]},
-                {title: 'CSS', collapsable: false, children: []},
+                {title: 'CSS', collapsable: false, children: ["1"]},
             ],
             '/webpack/': [
-                {title: 'webpack', collapsable: false, children: ["",'2']},
+                {title: 'webpack', collapsable: false, children: ["", '2', '3']},
+            ],
+            '/engineering/': [
+                {title: 'babel', collapsable: false, children: [""]},
+                {title: 'postcss', collapsable: false, children: ["2"]},
+                {title: 'npm', collapsable: false, children: ["3"]},
             ]
         }
     }
