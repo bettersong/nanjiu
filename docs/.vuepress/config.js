@@ -36,6 +36,7 @@ module.exports = {
                 { text: 'webpack', link: '/webpack/' },
                 { text: '合集', link: '/engineering/'}
             ] },
+            {text: '性能优化', link: '/performance/'},
             { text: '关于', link: '/about/' }
         ],
         // sidebar: 'auto'
@@ -58,6 +59,13 @@ module.exports = {
                 {title: 'babel', collapsable: false, children: [""]},
                 {title: 'postcss', collapsable: false, children: ["2"]},
                 {title: 'npm', collapsable: false, children: ["3"]},
+            ],
+            '/performance/': [
+                {
+                    title: "性能优化",
+                    collapsable: false,
+                    children: [""],
+                },
             ]
         }
     }
