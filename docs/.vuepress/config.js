@@ -64,7 +64,7 @@ module.exports = {
                 {
                     title: "性能优化",
                     collapsable: false,
-                    children: [""],
+                    children: ["", "zhibiao"],
                 },
             ]
         }
