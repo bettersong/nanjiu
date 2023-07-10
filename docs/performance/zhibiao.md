@@ -143,7 +143,7 @@ performance.timing.loadEventEnd - performance.timing.fetchStart
 
 简单点理解就是`FCP`事件指渲染出第一个内容的事件，而`FP`指渲染出第一个像素点，渲染出的东西可能是内容，也可能不是。
 
-**⚠️需要注意的是，`FCP`一定不会比`FP`晚触发，但可能会一起触发，绝大多数情况是FP在FCP之前触发！**
+**⚠️需要注意的是，`FP`一定不会比`FCP`晚触发，但可能会一起触发，绝大多数情况是FP在FCP之前触发！**
 
 #### 几种场景
 
