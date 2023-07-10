@@ -36,6 +36,7 @@ module.exports = {
                 { text: 'webpack', link: '/webpack/' },
                 { text: '合集', link: '/engineering/'}
             ] },
+            { text: 'Node', link: '/nest/'},
             {text: '性能优化', link: '/performance/'},
             { text: '关于', link: '/about/' }
         ],
@@ -66,6 +67,9 @@ module.exports = {
                     collapsable: false,
                     children: ["", "zhibiao"],
                 },
+            ],
+            '/nest/': [
+                {title: 'NestJS', collapsable: false, children: [""]},
             ]
         }
     }
