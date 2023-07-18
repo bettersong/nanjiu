@@ -33,7 +33,7 @@ npx @nestjs/cli@latest
 安装完脚手架之后我们可以通过`nest --help`看看它都有哪些命令：
 
 
-![nest-1.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dded2b07a5044603956b9e43fc84aa1f~tplv-k3u1fbpfcp-watermark.image?)
+![nest-1.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dded2b07a5044603956b9e43fc84aa1f~tplv-k3u1fbpfcp-watermark.image)
 
 #### new|n
 
