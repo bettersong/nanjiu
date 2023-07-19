@@ -5,7 +5,8 @@ module.exports = {
     theme: 'reco',
     author: '南玖',
     head: [
-        ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }]
+        ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }],
+        ['meta', {name: 'referrer', content: 'no-referrer'}],
       ],
     locales: {
         '/': {
