@@ -1,5 +1,5 @@
 ---
-title: 【NestJS系列】从Nest CLI开始入门
+title: 从Nest CLI开始入门
 author: 南玖
 date: 2023-7-12
 categories: Node

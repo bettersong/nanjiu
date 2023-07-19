@@ -1,5 +1,5 @@
 ---
-title: 【NestJS系列】DI依赖注入与IOC控制反转
+title: DI依赖注入与IOC控制反转
 author: 南玖
 date: 2023-7-12
 categories: Node
