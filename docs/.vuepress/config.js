@@ -52,7 +52,7 @@ module.exports = {
             ],
             '/htmlcss/': [
                 {title: 'HTML', collapsable: false, children: [""]},
-                {title: 'CSS', collapsable: false, children: ["1"]},
+                {title: 'CSS', collapsable: false, children: ["1", "2"]},
             ],
             '/webpack/': [
                 {title: 'webpack', collapsable: false, children: ["", '2', '3']},
