@@ -37,7 +37,10 @@ module.exports = {
                 { text: 'webpack', link: '/webpack/' },
                 { text: '合集', link: '/engineering/'}
             ] },
-            { text: 'Node', link: '/nest/'},
+            { text: 'Node', items: [
+                {text: 'Nest', link: '/nest/'},
+                {text: 'Npm', link: '/npm/'},
+            ]},
             {text: '性能优化', link: '/performance/'},
             { text: '关于', link: '/about/' }
         ],
@@ -71,6 +74,9 @@ module.exports = {
             ],
             '/nest/': [
                 {title: 'NestJS', collapsable: false, children: ["", "1cli", "2ioc", "3controller", "4provider"]},
+            ],
+            '/npm/': [
+                {title: 'NPM', collapsable: false, children: [""]},
             ]
         }
     }
