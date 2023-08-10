@@ -1,7 +1,7 @@
 ---
-title: 熟悉又陌生的package.json
+title: 关于package-lock.json
 author: 南玖
-date: 2023-8-7
+date: 2023-8-10
 categories: Node
 tags:
  - npm
