@@ -45,7 +45,7 @@ nest new project-name
 
 该命令表示初始化一个名为`project-name`的`Nest`项目，并且会帮你安装好所有必要的依赖，简直就是一步到位，非常棒\~
 
-上图中我们可以看到`nest|n`，`n`代表`nest`的别名，所以为了方便，你也可以这样使用：
+上图中我们可以看到`new|n`，`n`代表`new`的别名，所以为了方便，你也可以这样使用：
 
 ```shell
 nest n project-name
