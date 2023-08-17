@@ -298,6 +298,12 @@ docker exec -it a03b0445b82d /bin/bash
 
 **注意：** 如果从这个容器退出，容器不会停止，这就是为什么推荐大家使用 **docker exec** 的原因。
 
+当容器中没有`bash`，可以自行安装
+
+```shell
+apk update && apk add bash
+```
+
 **attach**（不推荐使用）
 
 ```shell

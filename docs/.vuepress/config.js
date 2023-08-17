@@ -80,7 +80,7 @@ module.exports = {
                 {title: 'NPM', collapsable: false, children: ["", "2package-lock"]},
             ],
             '/docker/': [
-                {title: 'Docker', collapsable: false, children: [""]},
+                {title: 'Docker', collapsable: false, children: ["", "2"]},
             ]
         }
     }
