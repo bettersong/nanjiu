@@ -2,7 +2,7 @@
 title: 从Babel开始认识AST抽象语法树
 author: 南玖
 date: 2023-06-25
-categories: babel
+categories: 工程化
 tags:
   - babel
 ---

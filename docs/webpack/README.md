@@ -2,7 +2,7 @@
 title: 【webpack系列】从核心概念到上手配置
 author: 南玖
 date: 2023-06-21
-categories: webpack
+categories: 工程化
 tags:
   - webpack
 ---

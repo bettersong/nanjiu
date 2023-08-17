@@ -64,7 +64,6 @@ module.exports = {
             '/engineering/': [
                 {title: 'babel', collapsable: false, children: [""]},
                 {title: 'postcss', collapsable: false, children: ["2"]},
-                {title: 'npm', collapsable: false, children: ["3"]},
             ],
             '/performance/': [
                 {
@@ -77,7 +76,7 @@ module.exports = {
                 {title: 'NestJS', collapsable: false, children: ["", "1cli", "2ioc", "3controller", "4provider"]},
             ],
             '/npm/': [
-                {title: 'NPM', collapsable: false, children: ["", "2package-lock"]},
+                {title: 'NPM', collapsable: false, children: ["", "2package-lock", "3"]},
             ],
             '/docker/': [
                 {title: 'Docker', collapsable: false, children: ["", "2"]},
