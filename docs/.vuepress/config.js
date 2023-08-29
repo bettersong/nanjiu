@@ -73,7 +73,7 @@ module.exports = {
                 },
             ],
             '/nest/': [
-                {title: 'NestJS', collapsable: false, children: ["", "1cli", "2ioc", "3controller", "4provider", "5module", "6middleware"]},
+                {title: 'NestJS', collapsable: false, children: ["", "1cli", "2ioc", "3controller", "4provider", "5module", "6middleware", "7sql"]},
             ],
             '/npm/': [
                 {title: 'NPM', collapsable: false, children: ["", "2package-lock", "3"]},
