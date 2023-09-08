@@ -31,8 +31,11 @@ module.exports = {
         },
         nav: [
             { text: '首页', link: '/' },
-            { text: 'JavaScript', link: '/javascript/' },
-            { text: 'HTML&CSS', link: '/htmlcss/' },
+            {text: '前端', items: [
+                { text: 'HTML&CSS', link: '/htmlcss/' },
+                { text: 'JavaScript', link: '/javascript/' },
+            ]},
+            
             { text: '工程化', items: [
                 { text: 'webpack', link: '/webpack/' },
                 { text: 'docker', link: '/docker/'},
