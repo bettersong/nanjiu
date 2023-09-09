@@ -45,6 +45,7 @@ module.exports = {
                 {text: 'Nest', link: '/nest/'},
                 {text: 'Npm', link: '/npm/'},
             ]},
+            {text: 'Flutter', link: '/flutter/'},
             {text: '性能优化', link: '/performance/'},
             { text: '关于', link: '/about/' }
         ],
@@ -83,6 +84,9 @@ module.exports = {
             ],
             '/docker/': [
                 {title: 'Docker', collapsable: false, children: ["", "2"]},
+            ],
+            '/flutter/': [
+                {title: 'Flutter', collapsable: false, children: ["", "2dart"]},
             ]
         }
     }
