@@ -198,7 +198,7 @@ print(name.runtimeType); // String
 var name = 'nanjiu'; // 已经初始化了，不能改为其他类型
 print(name); // nanjiu
 print(name.runtimeType); // String
-name = 10; // 不能将int赋值给String
+name = 10; // 不能将int赋值给String.
 ```
 
 
