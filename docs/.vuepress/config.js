@@ -56,7 +56,7 @@ module.exports = {
                 {
                     title: "JavaScript",
                     collapsable: false,
-                    children: ["", "eventloop", 'function', "file"],
+                    children: ["", "eventloop", 'function', "file", "wxavator"],
                 },
             ],
             '/htmlcss/': [
