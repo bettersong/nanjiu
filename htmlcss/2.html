@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>使用clip-path将 GIF 绘制成跳动的字母 | 前端南玖</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/nanjiu/sy.jpg">
+    <meta name="description" content="前端南玖的博客">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="referrer" content="no-referrer">
+    
+    <link rel="preload" href="/nanjiu/assets/css/0.styles.fc0672a4.css" as="style"><link rel="preload" href="/nanjiu/assets/js/app.76cb9285.js" as="script"><link rel="preload" href="/nanjiu/assets/js/3.21869b4f.js" as="script"><link rel="preload" href="/nanjiu/assets/js/1.9b52f643.js" as="script"><link rel="preload" href="/nanjiu/assets/js/19.2946e000.js" as="script"><link rel="prefetch" href="/nanjiu/assets/js/10.f1a27924.js"><link rel="prefetch" href="/nanjiu/assets/js/11.de75f91b.js"><link rel="prefetch" href="/nanjiu/assets/js/12.f2235a6b.js"><link rel="prefetch" href="/nanjiu/assets/js/13.d13adf12.js"><link rel="prefetch" href="/nanjiu/assets/js/14.ff2ac999.js"><link rel="prefetch" href="/nanjiu/assets/js/15.c06fff87.js"><link rel="prefetch" href="/nanjiu/assets/js/16.a3000c8f.js"><link rel="prefetch" href="/nanjiu/assets/js/17.f8b2bfdf.js"><link rel="prefetch" href="/nanjiu/assets/js/18.1d8a92f2.js"><link rel="prefetch" href="/nanjiu/assets/js/20.f2e00966.js"><link rel="prefetch" href="/nanjiu/assets/js/21.742783bd.js"><link rel="prefetch" href="/nanjiu/assets/js/22.dc3c16cb.js"><link rel="prefetch" href="/nanjiu/assets/js/23.eb3a3737.js"><link rel="prefetch" href="/nanjiu/assets/js/24.80e3e28e.js"><link rel="prefetch" href="/nanjiu/assets/js/25.937e6f0d.js"><link rel="prefetch" href="/nanjiu/assets/js/26.24cd5627.js"><link rel="prefetch" href="/nanjiu/assets/js/27.04a0a4e3.js"><link rel="prefetch" href="/nanjiu/assets/js/28.26ccd3df.js"><link rel="prefetch" href="/nanjiu/assets/js/29.c0b84bca.js"><link rel="prefetch" href="/nanjiu/assets/js/30.d3f66dc7.js"><link rel="prefetch" href="/nanjiu/assets/js/31.d3028123.js"><link rel="prefetch" href="/nanjiu/assets/js/32.164d52be.js"><link rel="prefetch" href="/nanjiu/assets/js/33.54142859.js"><link rel="prefetch" href="/nanjiu/assets/js/34.a7a58004.js"><link rel="prefetch" href="/nanjiu/assets/js/35.7e4bdc27.js"><link rel="prefetch" href="/nanjiu/assets/js/36.9652e253.js"><link rel="prefetch" href="/nanjiu/assets/js/37.b78bff21.js"><link rel="prefetch" href="/nanjiu/assets/js/38.d3d9c03d.js"><link rel="prefetch" href="/nanjiu/assets/js/39.ae16f805.js"><link rel="prefetch" href="/nanjiu/assets/js/4.38958b26.js"><link rel="prefetch" href="/nanjiu/assets/js/40.5c032f69.js"><link rel="prefetch" href="/nanjiu/assets/js/5.9d762e5c.js"><link rel="prefetch" href="/nanjiu/assets/js/6.ef23ec35.js"><link rel="prefetch" href="/nanjiu/assets/js/7.cc01232d.js"><link rel="prefetch" href="/nanjiu/assets/js/8.7cc91b88.js"><link rel="prefetch" href="/nanjiu/assets/js/9.0d05c13b.js">
+    <link rel="stylesheet" href="/nanjiu/assets/css/0.styles.fc0672a4.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>前端南玖</h3> <p class="description" data-v-59e6cb88>前端南玖的博客</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2023
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/nanjiu/" class="home-link router-link-active"><img src="/nanjiu/logo.png" alt="前端南玖" class="logo"> <span class="site-name">前端南玖</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/nanjiu/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      前端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/nanjiu/htmlcss/" class="nav-link router-link-active"><i class="undefined"></i>
+  HTML&amp;CSS
+</a></li><li class="dropdown-item"><!----> <a href="/nanjiu/javascript/" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      工程化
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/nanjiu/webpack/" class="nav-link"><i class="undefined"></i>
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/nanjiu/docker/" class="nav-link"><i class="undefined"></i>
+  docker
+</a></li><li class="dropdown-item"><!----> <a href="/nanjiu/engineering/" class="nav-link"><i class="undefined"></i>
+  合集
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Node
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/nanjiu/nest/" class="nav-link"><i class="undefined"></i>
+  Nest
+</a></li><li class="dropdown-item"><!----> <a href="/nanjiu/npm/" class="nav-link"><i class="undefined"></i>
+  Npm
+</a></li></ul></div></div><div class="nav-item"><a href="/nanjiu/flutter/" class="nav-link"><i class="undefined"></i>
+  Flutter
+</a></div><div class="nav-item"><a href="/nanjiu/performance/" class="nav-link"><i class="undefined"></i>
+  性能优化
+</a></div><div class="nav-item"><a href="/nanjiu/about/" class="nav-link"><i class="undefined"></i>
+  关于
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><img src="/nanjiu/sy.jpg" alt="author-avatar" class="personal-img" data-v-1fad0c41> <!----> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>30</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>12</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41><li class="social-item" data-v-1fad0c41><i class="iconfont reco-github" style="color:#f26d6d;" data-v-1fad0c41></i></li><li class="social-item" data-v-1fad0c41><i class="iconfont reco-juejin" style="color:#abbd81;" data-v-1fad0c41></i></li><li class="social-item" data-v-1fad0c41><i class="iconfont reco-zhihu" style="color:#e15b64;" data-v-1fad0c41></i></li></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/nanjiu/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      前端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/nanjiu/htmlcss/" class="nav-link router-link-active"><i class="undefined"></i>
+  HTML&amp;CSS
+</a></li><li class="dropdown-item"><!----> <a href="/nanjiu/javascript/" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      工程化
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/nanjiu/webpack/" class="nav-link"><i class="undefined"></i>
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/nanjiu/docker/" class="nav-link"><i class="undefined"></i>
+  docker
+</a></li><li class="dropdown-item"><!----> <a href="/nanjiu/engineering/" class="nav-link"><i class="undefined"></i>
+  合集
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Node
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/nanjiu/nest/" class="nav-link"><i class="undefined"></i>
+  Nest
+</a></li><li class="dropdown-item"><!----> <a href="/nanjiu/npm/" class="nav-link"><i class="undefined"></i>
+  Npm
+</a></li></ul></div></div><div class="nav-item"><a href="/nanjiu/flutter/" class="nav-link"><i class="undefined"></i>
+  Flutter
+</a></div><div class="nav-item"><a href="/nanjiu/performance/" class="nav-link"><i class="undefined"></i>
+  性能优化
+</a></div><div class="nav-item"><a href="/nanjiu/about/" class="nav-link"><i class="undefined"></i>
+  关于
+</a></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>HTML</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/nanjiu/htmlcss/" aria-current="page" class="sidebar-link">究竟什么是shadowDOM</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>CSS</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/nanjiu/htmlcss/1.html" class="sidebar-link">两行CSS让页面提升了近7倍渲染性能！</a></li><li><a href="/nanjiu/htmlcss/2.html" aria-current="page" class="active sidebar-link">使用clip-path将 GIF 绘制成跳动的字母</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>使用clip-path将 GIF 绘制成跳动的字母</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2023
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">使用clip-path将 GIF 绘制成跳动的字母</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>南玖</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2023/7/20</span></i> <i class="iconfont reco-eye" data-v-8a445198><span id="/nanjiu/htmlcss/2.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-8a445198><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <i class="tags iconfont reco-tag" data-v-8a445198><span class="tag-item" data-v-8a445198>css</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>之前看到过一个有趣的CSS效果，今天我们也来实现一遍，将动图GIF通过<code>clip-path</code>绘制成一个个跳动的字母。</p> <p>效果如下：</p> <p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/726109595a7e42168072237edc7e58bf~tplv-k3u1fbpfcp-watermark.image?" alt="clip1.gif"></p> <p>GIF随便找的，嗯？这不是重点，重点是下面的实现过程，别被GIF吸引了。</p> <p><strong>如果这篇文章有帮助到你，❤️关注+点赞❤️鼓励一下作者，文章公众号首发，关注 <code>前端南玖</code> 第一时间获取最新文章～</strong></p> <h2 id="绘制字母"><a href="#绘制字母" class="header-anchor">#</a> 绘制字母</h2> <p>这是该效果的最重要部分，使用<code>clip-path</code>来绘制对应的字母。</p> <p>MDN上对<code>clip-path</code>的定义如下：</p> <blockquote><p>使用裁剪方式创建元素的可显示区域。区域内的部分显示，区域外的隐藏。</p></blockquote> <p>我们先来绘制一个字母，以字母<code>U</code>为例，因为这个绘制过程也有一个过渡动画，所以我们<strong>需要绘制两条路径两条路径必须具有相同数量的点</strong>。</p> <p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f23a23112d1f441794878430e44a87ca~tplv-k3u1fbpfcp-watermark.image?" alt="clip2.png"></p> <p>这就是字母<code>U</code>过度动画的开始与结束的路径。</p> <p>它对应的<code>clip-path</code>代码如下：</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.u</span> <span class="token punctuation">{</span>
+  <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">polygon</span><span class="token punctuation">(</span>
+    0 0<span class="token punctuation">,</span>
+    0 100%<span class="token punctuation">,</span>
+    100% 100%<span class="token punctuation">,</span>
+    100% 0<span class="token punctuation">,</span>
+    84% 0<span class="token punctuation">,</span>
+    61% 0<span class="token punctuation">,</span>
+    41% 0<span class="token punctuation">,</span>
+    19% 0
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* hover */</span>
+<span class="token selector">.container:hover .u</span> <span class="token punctuation">{</span>
+  <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">polygon</span><span class="token punctuation">(</span>
+    0 6%<span class="token punctuation">,</span>
+    5% 100%<span class="token punctuation">,</span>
+    96% 88%<span class="token punctuation">,</span>
+    98% 3%<span class="token punctuation">,</span>
+    71% 5%<span class="token punctuation">,</span>
+    71% 62%<span class="token punctuation">,</span>
+    31% 68%<span class="token punctuation">,</span>
+    25% 0
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这个路径也不必担心不会写，可以直接通过工具<a href="https://bennettfeely.com/clippy/" target="_blank" rel="noopener noreferrer">clippy<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>生成，非常方便，其它字母都可直接从这生成对应的绘制路径</p> <p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1308a3dffb934ece9e7bc96f8cec6ac2~tplv-k3u1fbpfcp-watermark.image?" alt="clip3.png"></p> <p>现在我们就来实现这个字母的<code>clip-path</code>以及动画</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+  <span class="token selector">body</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 100vw<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100vh<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #000<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.container</span> <span class="token punctuation">{</span>
+    <span class="token property">--duration</span><span class="token punctuation">:</span> 700ms<span class="token punctuation">;</span>
+    <span class="token property">--ease</span><span class="token punctuation">:</span> <span class="token function">cubic-bezier</span><span class="token punctuation">(</span>0.16<span class="token punctuation">,</span> 1<span class="token punctuation">,</span> 0.3<span class="token punctuation">,</span> 1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">max-width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+    <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+    <span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 10px auto<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.letter</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 80px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 80px<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> salmon<span class="token punctuation">;</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> clip-path <span class="token function">var</span><span class="token punctuation">(</span>--duration<span class="token punctuation">)</span> <span class="token function">var</span><span class="token punctuation">(</span>--ease<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.u</span> <span class="token punctuation">{</span>
+    <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">polygon</span><span class="token punctuation">(</span>
+      0 0<span class="token punctuation">,</span>
+      0 100%<span class="token punctuation">,</span>
+      100% 100%<span class="token punctuation">,</span>
+      100% 0<span class="token punctuation">,</span>
+      84% 0<span class="token punctuation">,</span>
+      61% 0<span class="token punctuation">,</span>
+      41% 0<span class="token punctuation">,</span>
+      19% 0
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+<span class="token comment">/* hover */</span>
+<span class="token selector">.container:hover .u</span> <span class="token punctuation">{</span>
+  <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">polygon</span><span class="token punctuation">(</span>
+    0 6%<span class="token punctuation">,</span>
+    5% 100%<span class="token punctuation">,</span>
+    96% 88%<span class="token punctuation">,</span>
+    98% 3%<span class="token punctuation">,</span>
+    71% 5%<span class="token punctuation">,</span>
+    71% 62%<span class="token punctuation">,</span>
+    31% 68%<span class="token punctuation">,</span>
+    25% 0
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>container<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>letter u<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>来看看效果：</p> <p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3706c75cb5dd4f3ebe2b7a6ac482c200~tplv-k3u1fbpfcp-watermark.image?" alt="clip4.gif"></p> <p>是不是有点感觉了，少了鹿晗差点感觉？别急着就给你加上。</p> <h2 id="添加背景"><a href="#添加背景" class="header-anchor">#</a> 添加背景</h2> <p>直接给这个div加上<code>gif</code>背景行不行？直接添加当然也可以，但想要给他加点合成虚化的效果，这里就可以使用<code>mix-blend-mode</code>来实现</p> <p>MDN上对<code>mix-blend-mode</code>的定义如下</p> <blockquote><p>描述了元素的内容应该与元素的直系父元素的内容和元素的背景如何混合。</p></blockquote> <p>添加代码：</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.letter::before</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">&quot;https://img.soogif.com/xiOE4Hs23bEoQVgN15NOtTUJ7cxFeExY.gif&quot;</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+  <span class="token property">background-position</span><span class="token punctuation">:</span> 50% 0%<span class="token punctuation">;</span>
+  <span class="token property">background-size</span><span class="token punctuation">:</span> cover<span class="token punctuation">;</span>
+  <span class="token property">mix-blend-mode</span><span class="token punctuation">:</span> soft-light<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>效果如下：</p> <p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d415eeaccfa34201bad347f3d59e00b3~tplv-k3u1fbpfcp-watermark.image?" alt="clip5.gif"></p> <h2 id="添加摇晃的动画"><a href="#添加摇晃的动画" class="header-anchor">#</a> 添加摇晃的动画</h2> <p>这个就比较简单了</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token atrule"><span class="token rule">@keyframes</span> letter</span> <span class="token punctuation">{</span>
+  <span class="token selector">25%</span>  <span class="token punctuation">{</span> <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span>-5%<span class="token punctuation">,</span>  5%<span class="token punctuation">)</span> <span class="token function">scale</span><span class="token punctuation">(</span>1.05<span class="token punctuation">)</span> <span class="token function">rotate</span><span class="token punctuation">(</span>-5deg<span class="token punctuation">)</span> <span class="token punctuation">}</span>
+  <span class="token selector">50%</span>  <span class="token punctuation">{</span> <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span> 5%<span class="token punctuation">,</span> -2%<span class="token punctuation">)</span> <span class="token function">rotate</span><span class="token punctuation">(</span> 2deg<span class="token punctuation">)</span> <span class="token punctuation">}</span>
+  <span class="token selector">75%</span>  <span class="token punctuation">{</span> <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span>10%<span class="token punctuation">,</span>  0%<span class="token punctuation">)</span> <span class="token function">scale</span><span class="token punctuation">(</span>1.02<span class="token punctuation">)</span> <span class="token function">rotate</span><span class="token punctuation">(</span> 8deg<span class="token punctuation">)</span> <span class="token punctuation">}</span>
+  <span class="token selector">100%</span> <span class="token punctuation">{</span> <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span> 0%<span class="token punctuation">,</span> -5%<span class="token punctuation">)</span> <span class="token function">rotate</span><span class="token punctuation">(</span> 4deg<span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@keyframes</span> dance</span> <span class="token punctuation">{</span>
+  <span class="token selector">100%</span> <span class="token punctuation">{</span> <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scale</span><span class="token punctuation">(</span>1.25<span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>现在的效果如下：</p> <p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6b89a24e2ec54fbc8b685265056c19c4~tplv-k3u1fbpfcp-watermark.image?" alt="clip6.gif"></p> <h2 id="添加变色"><a href="#添加变色" class="header-anchor">#</a> 添加变色</h2> <p>为了更好的看到效果，这里又添加了几个字母，并生成了对应的<code>clip-path</code></p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.u</span> <span class="token punctuation">{</span>
+  <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">polygon</span><span class="token punctuation">(</span>0 0<span class="token punctuation">,</span> 0 100%<span class="token punctuation">,</span> 100% 100%<span class="token punctuation">,</span> 100% 0<span class="token punctuation">,</span> 84% 0<span class="token punctuation">,</span> 61% 0<span class="token punctuation">,</span> 41% 0<span class="token punctuation">,</span> 19% 0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.container:hover .u</span> <span class="token punctuation">{</span>
+  <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">polygon</span><span class="token punctuation">(</span>0 6%<span class="token punctuation">,</span> 5% 100%<span class="token punctuation">,</span> 96% 88%<span class="token punctuation">,</span> 98% 3%<span class="token punctuation">,</span> 71% 5%<span class="token punctuation">,</span> 71% 62%<span class="token punctuation">,</span> 31% 68%<span class="token punctuation">,</span> 25% 0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.a</span> <span class="token punctuation">{</span>
+  <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">polygon</span><span class="token punctuation">(</span>0 0<span class="token punctuation">,</span> 100% 0<span class="token punctuation">,</span> 100% 100%<span class="token punctuation">,</span> 0% 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.container:hover .a</span> <span class="token punctuation">{</span>
+  <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">polygon</span><span class="token punctuation">(</span>46% 2%<span class="token punctuation">,</span> 57% 0<span class="token punctuation">,</span> 100% 83%<span class="token punctuation">,</span> 0% 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.s</span> <span class="token punctuation">{</span>
+  <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">polygon</span><span class="token punctuation">(</span>0% 0%<span class="token punctuation">,</span> 51% 0<span class="token punctuation">,</span> 100% 0<span class="token punctuation">,</span> 100% 100%<span class="token punctuation">,</span> 50% 100%<span class="token punctuation">,</span> 0 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.container:hover .s</span> <span class="token punctuation">{</span>
+  <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">polygon</span><span class="token punctuation">(</span>100% 0<span class="token punctuation">,</span> 60% 40%<span class="token punctuation">,</span> 100% 70%<span class="token punctuation">,</span> 0 100%<span class="token punctuation">,</span> 40% 60%<span class="token punctuation">,</span> 0 30%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.d</span> <span class="token punctuation">{</span>
+  <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">polygon</span><span class="token punctuation">(</span>0% 0%<span class="token punctuation">,</span> 0% 100%<span class="token punctuation">,</span> 25% 100%<span class="token punctuation">,</span> 60% 60%<span class="token punctuation">,</span> 60% 60%<span class="token punctuation">,</span> 40% 40%<span class="token punctuation">,</span> 40% 40%<span class="token punctuation">,</span> 25% 100%<span class="token punctuation">,</span> 100% 100%<span class="token punctuation">,</span> 100% 0%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.container:hover .d</span> <span class="token punctuation">{</span>
+  <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">polygon</span><span class="token punctuation">(</span>6% 2%<span class="token punctuation">,</span> 0 93%<span class="token punctuation">,</span> 31% 100%<span class="token punctuation">,</span> 27% 30%<span class="token punctuation">,</span> 54% 34%<span class="token punctuation">,</span> 61% 59%<span class="token punctuation">,</span> 21% 72%<span class="token punctuation">,</span> 31% 100%<span class="token punctuation">,</span> 100% 74%<span class="token punctuation">,</span> 76% 11%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.p</span> <span class="token punctuation">{</span>
+  <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">polygon</span><span class="token punctuation">(</span>0% 0%<span class="token punctuation">,</span> 0% 100%<span class="token punctuation">,</span> 25% 100%<span class="token punctuation">,</span> 49% 56%<span class="token punctuation">,</span> 49% 46%<span class="token punctuation">,</span> 49% 47%<span class="token punctuation">,</span> 19% 56%<span class="token punctuation">,</span> 25% 100%<span class="token punctuation">,</span> 100% 100%<span class="token punctuation">,</span> 100% 0%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.container:hover .p</span> <span class="token punctuation">{</span>
+  <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">polygon</span><span class="token punctuation">(</span>5% 3%<span class="token punctuation">,</span> 2% 100%<span class="token punctuation">,</span> 33% 92%<span class="token punctuation">,</span> 24% 18%<span class="token punctuation">,</span> 71% 25%<span class="token punctuation">,</span> 57% 46%<span class="token punctuation">,</span> 25% 41%<span class="token punctuation">,</span> 19% 66%<span class="token punctuation">,</span> 90% 55%<span class="token punctuation">,</span> 100% 0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>此时效果是这样的：</p> <p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d51538a141b64191a345233b6e64439d~tplv-k3u1fbpfcp-watermark.image?" alt="clip7.gif">
+此时跟我们最终的效果就差一个变色了，变色其实也很简单，在关键帧中三种颜色之间不断进行转换，<code>#a6e630</code>，<code>#f5e82f</code>， 和<code>#4cb8f5</code></p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.container:hover .letter</span> <span class="token punctuation">{</span>
+  <span class="token property">animation</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span><span class="token function">var</span><span class="token punctuation">(</span>--duration<span class="token punctuation">)</span> * 2<span class="token punctuation">)</span> <span class="token function">calc</span><span class="token punctuation">(</span><span class="token function">var</span><span class="token punctuation">(</span>--i<span class="token punctuation">)</span> * <span class="token punctuation">(</span><span class="token function">var</span><span class="token punctuation">(</span>--duration<span class="token punctuation">)</span> / -3<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token function">steps</span><span class="token punctuation">(</span>3<span class="token punctuation">,</span> end<span class="token punctuation">)</span> alternate infinite<span class="token punctuation">;</span>
+  <span class="token property">animation-name</span><span class="token punctuation">:</span> colors<span class="token punctuation">,</span> letter<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.container:hover .letter::before</span> <span class="token punctuation">{</span>
+  <span class="token property">animation</span><span class="token punctuation">:</span> dance <span class="token function">calc</span><span class="token punctuation">(</span><span class="token function">var</span><span class="token punctuation">(</span>--duration<span class="token punctuation">)</span> * 2<span class="token punctuation">)</span> <span class="token function">calc</span><span class="token punctuation">(</span><span class="token function">var</span><span class="token punctuation">(</span>--i<span class="token punctuation">)</span> * <span class="token punctuation">(</span><span class="token function">var</span><span class="token punctuation">(</span>--duration<span class="token punctuation">)</span> / -3<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token function">steps</span><span class="token punctuation">(</span>3<span class="token punctuation">,</span> end<span class="token punctuation">)</span> infinite<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@keyframes</span> colors</span> <span class="token punctuation">{</span>
+  <span class="token selector">0%</span>   <span class="token punctuation">{</span> <span class="token property">background-color</span><span class="token punctuation">:</span> #a6e630 <span class="token punctuation">}</span>
+  <span class="token selector">50%</span>  <span class="token punctuation">{</span> <span class="token property">background-color</span><span class="token punctuation">:</span> #f5e82f <span class="token punctuation">}</span>
+  <span class="token selector">100%</span> <span class="token punctuation">{</span> <span class="token property">background-color</span><span class="token punctuation">:</span> #4cb8f5 <span class="token punctuation">}</span> 
+<span class="token punctuation">}</span>
+</code></pre></div><p>此时最终的效果就完成了～</p> <p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fbbcf1c8ea1e46249649628b35a58fd2~tplv-k3u1fbpfcp-watermark.image?" alt="clip1.gif"></p></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/nanjiu/htmlcss/1.html" class="prev">
+          两行CSS让页面提升了近7倍渲染性能！
+        </a></span> <!----></p></div> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/nanjiu/htmlcss/2.html#前言" class="sidebar-link reco-side-前言" data-v-b57cc07c>前言</a></li><li class="level-2" data-v-b57cc07c><a href="/nanjiu/htmlcss/2.html#绘制字母" class="sidebar-link reco-side-绘制字母" data-v-b57cc07c>绘制字母</a></li><li class="level-2" data-v-b57cc07c><a href="/nanjiu/htmlcss/2.html#添加背景" class="sidebar-link reco-side-添加背景" data-v-b57cc07c>添加背景</a></li><li class="level-2" data-v-b57cc07c><a href="/nanjiu/htmlcss/2.html#添加摇晃的动画" class="sidebar-link reco-side-添加摇晃的动画" data-v-b57cc07c>添加摇晃的动画</a></li><li class="level-2" data-v-b57cc07c><a href="/nanjiu/htmlcss/2.html#添加变色" class="sidebar-link reco-side-添加变色" data-v-b57cc07c>添加变色</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/nanjiu/assets/js/app.76cb9285.js" defer></script><script src="/nanjiu/assets/js/3.21869b4f.js" defer></script><script src="/nanjiu/assets/js/1.9b52f643.js" defer></script><script src="/nanjiu/assets/js/19.2946e000.js" defer></script>
+  </body>
+</html>

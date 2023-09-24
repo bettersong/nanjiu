@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>核心概念：Module模块 | 前端南玖</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/nanjiu/sy.jpg">
+    <meta name="description" content="前端南玖的博客">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="referrer" content="no-referrer">
+    
+    <link rel="preload" href="/nanjiu/assets/css/0.styles.fc0672a4.css" as="style"><link rel="preload" href="/nanjiu/assets/js/app.76cb9285.js" as="script"><link rel="preload" href="/nanjiu/assets/js/3.21869b4f.js" as="script"><link rel="preload" href="/nanjiu/assets/js/1.9b52f643.js" as="script"><link rel="preload" href="/nanjiu/assets/js/29.c0b84bca.js" as="script"><link rel="prefetch" href="/nanjiu/assets/js/10.f1a27924.js"><link rel="prefetch" href="/nanjiu/assets/js/11.de75f91b.js"><link rel="prefetch" href="/nanjiu/assets/js/12.f2235a6b.js"><link rel="prefetch" href="/nanjiu/assets/js/13.d13adf12.js"><link rel="prefetch" href="/nanjiu/assets/js/14.ff2ac999.js"><link rel="prefetch" href="/nanjiu/assets/js/15.c06fff87.js"><link rel="prefetch" href="/nanjiu/assets/js/16.a3000c8f.js"><link rel="prefetch" href="/nanjiu/assets/js/17.f8b2bfdf.js"><link rel="prefetch" href="/nanjiu/assets/js/18.1d8a92f2.js"><link rel="prefetch" href="/nanjiu/assets/js/19.2946e000.js"><link rel="prefetch" href="/nanjiu/assets/js/20.f2e00966.js"><link rel="prefetch" href="/nanjiu/assets/js/21.742783bd.js"><link rel="prefetch" href="/nanjiu/assets/js/22.dc3c16cb.js"><link rel="prefetch" href="/nanjiu/assets/js/23.eb3a3737.js"><link rel="prefetch" href="/nanjiu/assets/js/24.80e3e28e.js"><link rel="prefetch" href="/nanjiu/assets/js/25.937e6f0d.js"><link rel="prefetch" href="/nanjiu/assets/js/26.24cd5627.js"><link rel="prefetch" href="/nanjiu/assets/js/27.04a0a4e3.js"><link rel="prefetch" href="/nanjiu/assets/js/28.26ccd3df.js"><link rel="prefetch" href="/nanjiu/assets/js/30.d3f66dc7.js"><link rel="prefetch" href="/nanjiu/assets/js/31.d3028123.js"><link rel="prefetch" href="/nanjiu/assets/js/32.164d52be.js"><link rel="prefetch" href="/nanjiu/assets/js/33.54142859.js"><link rel="prefetch" href="/nanjiu/assets/js/34.a7a58004.js"><link rel="prefetch" href="/nanjiu/assets/js/35.7e4bdc27.js"><link rel="prefetch" href="/nanjiu/assets/js/36.9652e253.js"><link rel="prefetch" href="/nanjiu/assets/js/37.b78bff21.js"><link rel="prefetch" href="/nanjiu/assets/js/38.d3d9c03d.js"><link rel="prefetch" href="/nanjiu/assets/js/39.ae16f805.js"><link rel="prefetch" href="/nanjiu/assets/js/4.38958b26.js"><link rel="prefetch" href="/nanjiu/assets/js/40.5c032f69.js"><link rel="prefetch" href="/nanjiu/assets/js/5.9d762e5c.js"><link rel="prefetch" href="/nanjiu/assets/js/6.ef23ec35.js"><link rel="prefetch" href="/nanjiu/assets/js/7.cc01232d.js"><link rel="prefetch" href="/nanjiu/assets/js/8.7cc91b88.js"><link rel="prefetch" href="/nanjiu/assets/js/9.0d05c13b.js">
+    <link rel="stylesheet" href="/nanjiu/assets/css/0.styles.fc0672a4.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>前端南玖</h3> <p class="description" data-v-59e6cb88>前端南玖的博客</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2023
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/nanjiu/" class="home-link router-link-active"><img src="/nanjiu/logo.png" alt="前端南玖" class="logo"> <span class="site-name">前端南玖</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/nanjiu/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      前端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/nanjiu/htmlcss/" class="nav-link"><i class="undefined"></i>
+  HTML&amp;CSS
+</a></li><li class="dropdown-item"><!----> <a href="/nanjiu/javascript/" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      工程化
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/nanjiu/webpack/" class="nav-link"><i class="undefined"></i>
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/nanjiu/docker/" class="nav-link"><i class="undefined"></i>
+  docker
+</a></li><li class="dropdown-item"><!----> <a href="/nanjiu/engineering/" class="nav-link"><i class="undefined"></i>
+  合集
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Node
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/nanjiu/nest/" class="nav-link router-link-active"><i class="undefined"></i>
+  Nest
+</a></li><li class="dropdown-item"><!----> <a href="/nanjiu/npm/" class="nav-link"><i class="undefined"></i>
+  Npm
+</a></li></ul></div></div><div class="nav-item"><a href="/nanjiu/flutter/" class="nav-link"><i class="undefined"></i>
+  Flutter
+</a></div><div class="nav-item"><a href="/nanjiu/performance/" class="nav-link"><i class="undefined"></i>
+  性能优化
+</a></div><div class="nav-item"><a href="/nanjiu/about/" class="nav-link"><i class="undefined"></i>
+  关于
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><img src="/nanjiu/sy.jpg" alt="author-avatar" class="personal-img" data-v-1fad0c41> <!----> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>30</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>12</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41><li class="social-item" data-v-1fad0c41><i class="iconfont reco-github" style="color:#f26d6d;" data-v-1fad0c41></i></li><li class="social-item" data-v-1fad0c41><i class="iconfont reco-juejin" style="color:#abbd81;" data-v-1fad0c41></i></li><li class="social-item" data-v-1fad0c41><i class="iconfont reco-zhihu" style="color:#e15b64;" data-v-1fad0c41></i></li></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/nanjiu/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      前端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/nanjiu/htmlcss/" class="nav-link"><i class="undefined"></i>
+  HTML&amp;CSS
+</a></li><li class="dropdown-item"><!----> <a href="/nanjiu/javascript/" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      工程化
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/nanjiu/webpack/" class="nav-link"><i class="undefined"></i>
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/nanjiu/docker/" class="nav-link"><i class="undefined"></i>
+  docker
+</a></li><li class="dropdown-item"><!----> <a href="/nanjiu/engineering/" class="nav-link"><i class="undefined"></i>
+  合集
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Node
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/nanjiu/nest/" class="nav-link router-link-active"><i class="undefined"></i>
+  Nest
+</a></li><li class="dropdown-item"><!----> <a href="/nanjiu/npm/" class="nav-link"><i class="undefined"></i>
+  Npm
+</a></li></ul></div></div><div class="nav-item"><a href="/nanjiu/flutter/" class="nav-link"><i class="undefined"></i>
+  Flutter
+</a></div><div class="nav-item"><a href="/nanjiu/performance/" class="nav-link"><i class="undefined"></i>
+  性能优化
+</a></div><div class="nav-item"><a href="/nanjiu/about/" class="nav-link"><i class="undefined"></i>
+  关于
+</a></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>NestJS</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/nanjiu/nest/" aria-current="page" class="sidebar-link">前言</a></li><li><a href="/nanjiu/nest/1cli.html" class="sidebar-link">从Nest CLI开始入门</a></li><li><a href="/nanjiu/nest/2ioc.html" class="sidebar-link">DI依赖注入与IOC控制反转</a></li><li><a href="/nanjiu/nest/3controller.html" class="sidebar-link">核心概念：Controller控制器</a></li><li><a href="/nanjiu/nest/4provider.html" class="sidebar-link">核心概念：Providers提供者</a></li><li><a href="/nanjiu/nest/5module.html" aria-current="page" class="active sidebar-link">核心概念：Module模块</a></li><li><a href="/nanjiu/nest/6middleware.html" class="sidebar-link">核心概念：Middleware中间件</a></li><li><a href="/nanjiu/nest/7sql.html" class="sidebar-link">连接数据库及优雅地处理响应</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>核心概念：Module模块</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2023
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">核心概念：Module模块</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>南玖</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2023/8/28</span></i> <i class="iconfont reco-eye" data-v-8a445198><span id="/nanjiu/nest/5module.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-8a445198><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <i class="tags iconfont reco-tag" data-v-8a445198><span class="tag-item" data-v-8a445198>nest</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>模块指的是使用<code>@Module</code>装饰器修饰的类，每个应用程序至少有一个模块，即<strong>根模块</strong>。根模块是<code>Nest</code>用于构建应用程序的起点，理论上<code>Nest</code>程序可能只有根模块，但在大多数情况下是存在多个模块的，每个模块各自封装一组相关的功能。</p> <p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c07e2a86a13349caadcea73779d7ef38~tplv-k3u1fbpfcp-watermark.image?" alt="5-1.png"></p> <h2 id="module装饰器"><a href="#module装饰器" class="header-anchor">#</a> @Module装饰器</h2> <p><code>@Module()</code>装饰器可以传入一个对象，属性值如下：</p> <table><thead><tr><th><code>providers</code></th> <th>将由 Nest 注入器实例化的提供程序，并且至少可以在该模块中共享</th></tr></thead> <tbody><tr><td><code>controllers</code></td> <td>该模块中定义的必须实例化的控制器集</td></tr> <tr><td><code>imports</code></td> <td>导入模块的列表，导出该模块所需的提供程序</td></tr> <tr><td><code>exports</code></td> <td>该子集<code>providers</code>由该模块提供，并且应该在导入该模块的其他模块中可用</td></tr></tbody></table> <div class="language-js extra-class"><pre class="language-js"><code>@<span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">imports</span><span class="token operator">:</span> <span class="token punctuation">[</span>NanjiuModule<span class="token punctuation">,</span> UserModule<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">controllers</span><span class="token operator">:</span> <span class="token punctuation">[</span>AppController<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">providers</span><span class="token operator">:</span> <span class="token punctuation">[</span>AppService<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AppModule</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre></div><h2 id="模块共享"><a href="#模块共享" class="header-anchor">#</a> 模块共享</h2> <p>如果你想把当前模块的<code>service</code>暴露给其它模块使用，则可以使用<code>exports</code>到处该服务</p> <p>比如我使用<code>nest g resource info</code>新建了一个info类，并且使用<code>export</code>导出该服务</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// info.module.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Module <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nestjs/common'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> InfoService <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./info.service'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> InfoController <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./info.controller'</span><span class="token punctuation">;</span>
+
+@<span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">controllers</span><span class="token operator">:</span> <span class="token punctuation">[</span>InfoController<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">providers</span><span class="token operator">:</span> <span class="token punctuation">[</span>InfoService<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 提供者</span>
+  <span class="token literal-property property">exports</span><span class="token operator">:</span> <span class="token punctuation">[</span>InfoService<span class="token punctuation">]</span> <span class="token comment">// 导出 InfoService 供其他模块使用</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">InfoModule</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+</code></pre></div><p>然后我在<code>user</code>模块中使用<code>imports</code>导入该模块</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// user.module.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Module <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nestjs/common'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> UserService <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./user.service'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> UserController <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./user.controller'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> InfoModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'src/info/info.module'</span><span class="token punctuation">;</span>
+
+@<span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">imports</span><span class="token operator">:</span> <span class="token punctuation">[</span>InfoModule<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 导入 InfoModule</span>
+  <span class="token literal-property property">controllers</span><span class="token operator">:</span> <span class="token punctuation">[</span>UserController<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">providers</span><span class="token operator">:</span> <span class="token punctuation">[</span>UserService<span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">UserModule</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+</code></pre></div><p>最后在<code>controller</code>中依赖注入并使用</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// user.controller.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> InfoService <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'src/info/info.service'</span><span class="token punctuation">;</span>
+
+@<span class="token function">Controller</span><span class="token punctuation">(</span><span class="token string">'user'</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>
+    <span class="token keyword">private</span> readonly userService<span class="token operator">:</span> UserService<span class="token punctuation">,</span>
+    <span class="token keyword">private</span> readonly infoService<span class="token operator">:</span> InfoService<span class="token punctuation">,</span> <span class="token comment">// 注入 InfoService</span>
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  @<span class="token function">Post</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token function">create</span><span class="token punctuation">(</span><span class="token parameter">@<span class="token function">Body</span><span class="token punctuation">(</span><span class="token punctuation">)</span> createUserDto<span class="token operator">:</span> CreateUserDto</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>infoService<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 调用 InfoService 的 findAll 方法</span>
+
+    <span class="token comment">// return this.userService.create(createUserDto);</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/36ea0858efd948ac81ac58e1d20d065b~tplv-k3u1fbpfcp-watermark.image?" alt="5-2.png"></p> <p>这样就完成模块共享了，可以看到我们在<code>user</code>模块中可以调用<code>info</code>的服务</p> <h2 id="模块再导出"><a href="#模块再导出" class="header-anchor">#</a> 模块再导出</h2> <p>可以把一些常用的，公共的模块，全部先import进一个CommonModule，然后再把它们从exprots全部导出，以后如果有那个模块想要使用其中某个模块的Service，只需要将这个CommonModule导入即可，不用再导入所有的依赖模块</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// common.module.ts</span>
+@<span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">imports</span><span class="token operator">:</span> <span class="token punctuation">[</span>Module1<span class="token punctuation">,</span> Module2<span class="token punctuation">,</span> Module3<span class="token punctuation">,</span> Module4<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">exports</span><span class="token operator">:</span> <span class="token punctuation">[</span>Module1<span class="token punctuation">,</span> Module2<span class="token punctuation">,</span> Module3<span class="token punctuation">,</span> Module4<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">CommonModule</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre></div><h2 id="依赖注入"><a href="#依赖注入" class="header-anchor">#</a> 依赖注入</h2> <p>模块类也可以注入<code>provider</code>服务</p> <div class="language-js extra-class"><pre class="language-js"><code>
+@<span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">controllers</span><span class="token operator">:</span> <span class="token punctuation">[</span>UserController<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">providers</span><span class="token operator">:</span> <span class="token punctuation">[</span>UserService<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">UserModule</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter"><span class="token keyword">private</span> <span class="token literal-property property">userService</span><span class="token operator">:</span> UserService</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="全局模块"><a href="#全局模块" class="header-anchor">#</a> 全局模块</h2> <p>通过<code>@Global()</code>装饰器声明一个全局模块，只需要在根模块<code>imports</code>注册该全局模块，就可以在其他所有模块内使用它导出的<code>Service</code></p> <p>比如：将<code>info</code>声明为全局模块</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// info.module.ts</span>
+@<span class="token function">Global</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 全局模块</span>
+@<span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">controllers</span><span class="token operator">:</span> <span class="token punctuation">[</span>InfoController<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">providers</span><span class="token operator">:</span> <span class="token punctuation">[</span>InfoService<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 提供者</span>
+  <span class="token literal-property property">exports</span><span class="token operator">:</span> <span class="token punctuation">[</span>InfoService<span class="token punctuation">]</span> <span class="token comment">// 导出 InfoService 供其他模块使用</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">InfoModule</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+</code></pre></div><p>然后在<code>user</code>模块中无需导入，只需依赖注入就可直接使用（前提是已在根模块导入）</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// user.controller.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> CreateUserDto <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./dto/create-user.dto'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> InfoService <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'src/info/info.service'</span><span class="token punctuation">;</span>
+
+@<span class="token function">Controller</span><span class="token punctuation">(</span><span class="token string">'user'</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>
+    <span class="token keyword">private</span> readonly userService<span class="token operator">:</span> UserService<span class="token punctuation">,</span>
+    <span class="token keyword">private</span> readonly infoService<span class="token operator">:</span> InfoService<span class="token punctuation">,</span> <span class="token comment">// 注入 InfoService</span>
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  @<span class="token function">Post</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token function">create</span><span class="token punctuation">(</span><span class="token parameter">@<span class="token function">Body</span><span class="token punctuation">(</span><span class="token punctuation">)</span> createUserDto<span class="token operator">:</span> CreateUserDto</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>infoService<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 调用 InfoService 的 findAll 方法</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f9e48090bcfb4cd4a863ebdcd0751df0~tplv-k3u1fbpfcp-watermark.image?" alt="5-3.png"></p> <h2 id="动态模块"><a href="#动态模块" class="header-anchor">#</a> 动态模块</h2> <p>动态模块能够让我们创建可定制的模块，当导入模块并向其传入某些选项参数，这个模块根据这些选项参数来动态的创建不同特性的模块。</p> <h3 id="创建动态模块"><a href="#创建动态模块" class="header-anchor">#</a> 创建动态模块</h3> <p>动态模块其实就是给当前<code>Module</code>类提供一个<code>forRoot</code>方法，该方法返回一个新的<code>Module</code>，这个Module的类型是一个DynamicModule，在其他模块需要注册使用时，可以使用<code>xxxModule.forRoot(args)</code>来动态的注册不同的Module，以达到提供不同providers的目的。</p> <p>这里我们创建一个<code>config</code>的动态模块</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// config.module.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Module<span class="token punctuation">,</span> DynamicModule<span class="token punctuation">,</span> Global <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nestjs/common'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NanjiuService <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'src/nanjiu/nanjiu.service'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> UserService <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'src/user/user.service'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">Options</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> string
+<span class="token punctuation">}</span>
+@<span class="token function">Global</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+@<span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">ConfigModule</span> <span class="token punctuation">{</span>
+    <span class="token keyword">static</span> <span class="token function">forRoot</span><span class="token punctuation">(</span>options<span class="token operator">:</span> Options<span class="token punctuation">)</span><span class="token operator">:</span> DynamicModule <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'options'</span><span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">module</span><span class="token operator">:</span> ConfigModule<span class="token punctuation">,</span>
+            <span class="token literal-property property">providers</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span><span class="token literal-property property">provide</span><span class="token operator">:</span> <span class="token string">'config'</span><span class="token punctuation">,</span> <span class="token literal-property property">useClass</span><span class="token operator">:</span> options<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">'nanjiu'</span> <span class="token operator">?</span> NanjiuService <span class="token operator">:</span> UserService<span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">exports</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span><span class="token literal-property property">provide</span><span class="token operator">:</span> <span class="token string">'config'</span><span class="token punctuation">,</span> <span class="token literal-property property">useClass</span><span class="token operator">:</span> options<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">'nanjiu'</span> <span class="token operator">?</span> NanjiuService <span class="token operator">:</span> UserService<span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这个例子很简单，首先需要自己编写一个静态方法，该方法通过接收传递进来的参数判断使用哪一个<code>service</code>，并且为了方便，我这里直接使用<code>@Global()</code>装饰器将该模块声明称了全局模块</p> <h3 id="传递参数使用"><a href="#传递参数使用" class="header-anchor">#</a> 传递参数使用</h3> <p>调用静态方法传递参数</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// app.module.ts</span>
+@<span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">imports</span><span class="token operator">:</span> <span class="token punctuation">[</span>ConfigModule<span class="token punctuation">.</span><span class="token function">forRoot</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'fe'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">controllers</span><span class="token operator">:</span> <span class="token punctuation">[</span>AppController<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">providers</span><span class="token operator">:</span> <span class="token punctuation">[</span>AppService<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AppModule</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre></div><p>然后在<code>controller</code>中使用</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> Controller<span class="token punctuation">,</span> Get<span class="token punctuation">,</span> Inject <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nestjs/common'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> AppService <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./app.service'</span><span class="token punctuation">;</span>
+
+@<span class="token function">Controller</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AppController</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>
+    <span class="token keyword">private</span> readonly appService<span class="token operator">:</span> AppService<span class="token punctuation">,</span> 
+    @<span class="token function">Inject</span><span class="token punctuation">(</span><span class="token string">'config'</span><span class="token punctuation">)</span> <span class="token keyword">private</span> readonly configService <span class="token comment">// 注入 ConfigService</span>
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">'/hello2'</span><span class="token punctuation">)</span>
+  <span class="token function">get2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>configService<span class="token punctuation">.</span><span class="token function">getHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 调用 ConfigService 的 getHello 方法</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>比如上面<code>forRoot</code>传递的参数是<code>{name: 'nanjiu'}</code>，所以此时的<code>ConfigModule</code>注入的应该是<code>UserService</code></p> <p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/852a1fe9dc2d492ebb41c081e07445d2~tplv-k3u1fbpfcp-watermark.image?" alt="5-4.png"></p> <p>修改<code>forRoot</code>参数</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// app.module.ts</span>
+@<span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">imports</span><span class="token operator">:</span> <span class="token punctuation">[</span>ConfigModule<span class="token punctuation">.</span><span class="token function">forRoot</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'nanjiu'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">controllers</span><span class="token operator">:</span> <span class="token punctuation">[</span>AppController<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">providers</span><span class="token operator">:</span> <span class="token punctuation">[</span>AppService<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AppModule</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre></div><p>此时通过<code>get</code>方式再访问同样的路由，应该是访问到<code>NanjiuService</code>提供的服务了。</p> <p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/57f5f90b8a2c44aea39e82167cb90279~tplv-k3u1fbpfcp-watermark.image?" alt="5-5.png"></p> <p>以上就是动态模块的简单用法，后续内容我们还会再遇到它～</p></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/nanjiu/nest/4provider.html" class="prev">
+          核心概念：Providers提供者
+        </a></span> <span class="next"><a href="/nanjiu/nest/6middleware.html">
+          核心概念：Middleware中间件
+        </a></span></p></div> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/nanjiu/nest/5module.html#前言" class="sidebar-link reco-side-前言" data-v-b57cc07c>前言</a></li><li class="level-2" data-v-b57cc07c><a href="/nanjiu/nest/5module.html#module装饰器" class="sidebar-link reco-side-module装饰器" data-v-b57cc07c>@Module装饰器</a></li><li class="level-2" data-v-b57cc07c><a href="/nanjiu/nest/5module.html#模块共享" class="sidebar-link reco-side-模块共享" data-v-b57cc07c>模块共享</a></li><li class="level-2" data-v-b57cc07c><a href="/nanjiu/nest/5module.html#模块再导出" class="sidebar-link reco-side-模块再导出" data-v-b57cc07c>模块再导出</a></li><li class="level-2" data-v-b57cc07c><a href="/nanjiu/nest/5module.html#依赖注入" class="sidebar-link reco-side-依赖注入" data-v-b57cc07c>依赖注入</a></li><li class="level-2" data-v-b57cc07c><a href="/nanjiu/nest/5module.html#全局模块" class="sidebar-link reco-side-全局模块" data-v-b57cc07c>全局模块</a></li><li class="level-2" data-v-b57cc07c><a href="/nanjiu/nest/5module.html#动态模块" class="sidebar-link reco-side-动态模块" data-v-b57cc07c>动态模块</a></li><li class="level-3" data-v-b57cc07c><a href="/nanjiu/nest/5module.html#创建动态模块" class="sidebar-link reco-side-创建动态模块" data-v-b57cc07c>创建动态模块</a></li><li class="level-3" data-v-b57cc07c><a href="/nanjiu/nest/5module.html#传递参数使用" class="sidebar-link reco-side-传递参数使用" data-v-b57cc07c>传递参数使用</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/nanjiu/assets/js/app.76cb9285.js" defer></script><script src="/nanjiu/assets/js/3.21869b4f.js" defer></script><script src="/nanjiu/assets/js/1.9b52f643.js" defer></script><script src="/nanjiu/assets/js/29.c0b84bca.js" defer></script>
+  </body>
+</html>
