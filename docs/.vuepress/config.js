@@ -35,6 +35,7 @@ module.exports = {
             {text: '前端', items: [
                 { text: 'HTML&CSS', link: '/htmlcss/' },
                 { text: 'JavaScript', link: '/javascript/' },
+                { text: '小程序', link: '/miniprogram/' }
             ]},
             
             { text: '工程化', items: [
@@ -62,6 +63,9 @@ module.exports = {
             '/htmlcss/': [
                 {title: 'HTML', collapsable: false, children: [""]},
                 {title: 'CSS', collapsable: false, children: ["1", "2"]},
+            ],
+            '/miniprogram/': [
+                {title: '小程序', collapsable: false, children: [""]},
             ],
             '/webpack/': [
                 {title: 'webpack', collapsable: false, children: ["", '2', '3']},
