@@ -12,7 +12,7 @@ tags:
 [![job](https://img.shields.io/badge/%E7%A8%8B%E5%BA%8F%E5%91%98-%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88-brightgre?style=flat-square)]()
 [![hobby](https://img.shields.io/badge/%E7%88%B1%E5%A5%BD-%E5%86%99%E4%BD%9C&%E6%97%85%E6%B8%B8-brightgre?style=flat-square)]()
 
-<img src="https://bettersong.github.io/imgs/gzh.png" alt="gzh" style="zoom:25%;" />
+<img src="https://images.cnblogs.com/cnblogs_com/songyao666/2377390/o_240205104755_gzh.jpg" alt="gzh" style="zoom:25%;" />
 
 ## 联系我
 **你可以在以下网站（点击图片跳转）关注我（你的关注是对我的肯定）：**
