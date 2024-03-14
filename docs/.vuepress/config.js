@@ -65,7 +65,7 @@ module.exports = {
                 {title: 'CSS', collapsable: false, children: ["1", "2"]},
             ],
             '/miniprogram/': [
-                {title: '小程序', collapsable: false, children: [""]},
+                {title: '小程序', collapsable: false, children: ["", "1"]},
             ],
             '/webpack/': [
                 {title: 'webpack', collapsable: false, children: ["", '2', '3']},
